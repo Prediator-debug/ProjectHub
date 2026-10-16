@@ -105,7 +105,7 @@ const AuthModal = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={closeAuthModal}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/70 backdrop-blur-md"
         />
 
         {/* Modal Dialog */}
@@ -114,13 +114,13 @@ const AuthModal = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl z-10 text-slate-900 dark:text-white"
+          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white dark:bg-[#0d1117] border border-slate-200/90 dark:border-[#1c2a3e] rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl z-10 text-slate-900 dark:text-[#e8edf5]"
         >
           {/* Close button with large touch target */}
           <button
             id="auth-modal-close"
             onClick={closeAuthModal}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-[#161e2d] transition-colors"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -128,13 +128,13 @@ const AuthModal = () => {
 
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-5 sm:mb-6 pt-1">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400 shadow-sm">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-[#0a1628] border border-blue-100 dark:border-[#1c3a6e] flex items-center justify-center mb-3 text-blue-600 dark:text-[#4f8ef7] shadow-sm">
               {tab === 'login' ? <LogIn size={24} /> : <UserPlus size={24} />}
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-[#e8edf5] tracking-tight">
               {tab === 'login' ? 'Sign In to Submit Project' : 'Create Account'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xs leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-[#8b9ab4] mt-1 max-w-xs leading-relaxed">
               {tab === 'login'
                 ? 'Sign in to submit your project requirements and track progress.'
                 : 'Register in seconds to submit your project details and get a quick quote.'}
@@ -142,7 +142,7 @@ const AuthModal = () => {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 mb-5 sm:mb-6">
+          <div className="flex bg-slate-100 dark:bg-[#111827] p-1 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-[#1c2a3e] mb-5 sm:mb-6">
             <button
               type="button"
               id="auth-modal-tab-login"
@@ -150,7 +150,7 @@ const AuthModal = () => {
               className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'login'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-600 dark:text-[#8b9ab4] hover:text-slate-900 dark:hover:text-[#e8edf5]'
               }`}
             >
               Sign In
@@ -162,7 +162,7 @@ const AuthModal = () => {
               className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'register'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  : 'text-slate-600 dark:text-[#8b9ab4] hover:text-slate-900 dark:hover:text-[#e8edf5]'
               }`}
             >
               Sign Up
@@ -176,7 +176,7 @@ const AuthModal = () => {
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/60 rounded-xl px-4 py-2.5 text-red-600 dark:text-red-400 text-xs sm:text-sm text-center mb-4"
+                className="bg-red-50 dark:bg-[#1a0a0a] border border-red-200 dark:border-[#3d1515] rounded-xl px-4 py-2.5 text-red-600 dark:text-red-400 text-xs sm:text-sm text-center mb-4"
               >
                 {error}
               </motion.div>
@@ -187,7 +187,7 @@ const AuthModal = () => {
           {tab === 'login' ? (
             <form onSubmit={handleLoginSubmit} className="space-y-3.5 sm:space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1.5">
                   Email
                 </label>
                 <div className="relative">
@@ -201,20 +201,20 @@ const AuthModal = () => {
                       setLoginForm({ ...loginForm, email: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2.5 sm:py-3 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-4 py-2.5 sm:py-3 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider">
                     Password
                   </label>
                   <Link
                     to="/forgot-password"
                     onClick={closeAuthModal}
-                    className="text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    className="text-xs text-blue-600 dark:text-[#4f8ef7] hover:text-blue-700 dark:hover:text-[#7ba8fa] font-medium transition-colors"
                   >
                     Forgot password?
                   </Link>
@@ -230,12 +230,12 @@ const AuthModal = () => {
                       setLoginForm({ ...loginForm, password: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 sm:py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-10 py-2.5 sm:py-3 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 transition-colors"
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -257,12 +257,12 @@ const AuthModal = () => {
                 )}
               </button>
 
-              <p className="text-center text-xs sm:text-sm text-slate-600 pt-2">
+              <p className="text-center text-xs sm:text-sm text-slate-600 dark:text-[#8b9ab4] pt-2">
                 Don't have an account yet?{' '}
                 <button
                   type="button"
                   onClick={() => { setAuthModalTab('register'); setError(''); }}
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                  className="text-blue-600 dark:text-[#4f8ef7] font-semibold hover:text-blue-700 dark:hover:text-[#7ba8fa] transition-colors"
                 >
                   Create one now
                 </button>
@@ -272,7 +272,7 @@ const AuthModal = () => {
             /* Tab 2: Register Form */
             <form onSubmit={handleRegisterSubmit} className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1">
                   Full Name
                 </label>
                 <div className="relative">
@@ -286,13 +286,13 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, name: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-4 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1">
                   Email Address
                 </label>
                 <div className="relative">
@@ -306,13 +306,13 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, email: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-4 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1">
                   Password
                 </label>
                 <div className="relative">
@@ -326,12 +326,12 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, password: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-10 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 transition-colors"
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -343,7 +343,7 @@ const AuthModal = () => {
                         <div
                           key={i}
                           className={`h-1 flex-1 rounded-full transition-all duration-300 ${
-                            i <= strength.score ? strength.color : 'bg-slate-200'
+                            i <= strength.score ? strength.color : 'bg-slate-200 dark:bg-[#1c2a3e]'
                           }`}
                         />
                       ))}
@@ -354,7 +354,7 @@ const AuthModal = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -368,12 +368,12 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, confirmPassword: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl pl-10 pr-10 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 transition-colors"
                   >
                     {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -404,12 +404,12 @@ const AuthModal = () => {
                 )}
               </button>
 
-              <p className="text-center text-xs sm:text-sm text-slate-600 pt-1">
+              <p className="text-center text-xs sm:text-sm text-slate-600 dark:text-[#8b9ab4] pt-1">
                 Already have an account?{' '}
                 <button
                   type="button"
                   onClick={() => { setAuthModalTab('login'); setError(''); }}
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                  className="text-blue-600 dark:text-[#4f8ef7] font-semibold hover:text-blue-700 dark:hover:text-[#7ba8fa] transition-colors"
                 >
                   Sign in here
                 </button>

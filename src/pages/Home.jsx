@@ -12,10 +12,10 @@ const fadeUp = {
 const VIEWPORT = { once: true, amount: 0 };
 
 const services = [
-  { icon: Globe, title: 'Web Development', desc: 'Full-stack web apps, portfolios, and e-commerce sites.', price: 'Starting ₹499', color: 'bg-blue-50 text-blue-600 border-blue-200/80 dark:bg-blue-950/60 dark:text-blue-400 dark:border-blue-800/80' },
-  { icon: Brain, title: 'AI / ML Projects', desc: 'Machine learning models, NLP, computer vision projects.', price: 'Starting ₹999', color: 'bg-purple-50 text-purple-600 border-purple-200/80 dark:bg-purple-950/60 dark:text-purple-400 dark:border-purple-800/80' },
+  { icon: Globe, title: 'Web Development', desc: 'Full-stack web apps, portfolios, and e-commerce sites.', price: 'Starting ₹499', color: 'bg-blue-50 text-blue-600 border-blue-200/80 dark:bg-[#0a1628] dark:text-[#4f8ef7] dark:border-[#1c3a6e]' },
+  { icon: Brain, title: 'AI / ML Projects', desc: 'Machine learning models, NLP, computer vision projects.', price: 'Starting ₹999', color: 'bg-purple-50 text-purple-600 border-purple-200/80 dark:bg-[#130a28] dark:text-purple-400 dark:border-[#2a1060]' },
   { icon: Smartphone, title: 'Android Apps', desc: 'Native Android apps with Firebase backend.', price: 'Starting ₹799', color: 'bg-emerald-50 text-emerald-600 border-emerald-200/80 dark:bg-emerald-950/60 dark:text-emerald-400 dark:border-emerald-800/80' },
-  { icon: GraduationCap, title: 'Final Year Projects', desc: 'Complete major projects with report, PPT & source code.', price: 'Starting ₹1499', color: 'bg-amber-50 text-amber-600 border-amber-200/80 dark:bg-amber-950/60 dark:text-amber-400 dark:border-amber-800/80' },
+  { icon: GraduationCap, title: 'Final Year Projects', desc: 'Complete major projects with report, PPT & source code.', price: 'Starting ₹1499', color: 'bg-amber-50 text-amber-600 border-amber-200/80 dark:bg-[#1a1000] dark:text-amber-400 dark:border-[#3d2800]' },
 ];
 
 const steps = [
@@ -143,7 +143,7 @@ const Home = () => {
       <section className="relative z-10 min-h-[80vh] sm:min-h-[85vh] flex items-center justify-center overflow-hidden px-4 pt-16 sm:pt-20 pb-12 sm:pb-16">
         <div className="relative z-10 max-w-4xl mx-auto text-center w-full">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-            <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/60 backdrop-blur-sm border border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold mb-5 sm:mb-6 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50/90 dark:bg-[#0a1628] backdrop-blur-sm border border-blue-200/80 dark:border-[#1c3a6e] text-blue-700 dark:text-[#4f8ef7] text-xs sm:text-sm font-semibold mb-5 sm:mb-6 shadow-sm">
               <Zap size={14} className="text-amber-500 fill-amber-500" />
               #1 Student Project Platform in India
             </span>
@@ -154,7 +154,7 @@ const Home = () => {
             initial="hidden"
             animate="visible"
             custom={1}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.15] text-slate-900 dark:text-white mb-5 sm:mb-6 tracking-tight px-1"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.15] text-slate-900 dark:text-[#e8edf5] mb-5 sm:mb-6 tracking-tight px-1"
           >
             Get Industry-Level<br />
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
@@ -168,7 +168,7 @@ const Home = () => {
             initial="hidden"
             animate="visible"
             custom={2}
-            className="text-sm sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
+            className="text-sm sm:text-lg md:text-xl text-slate-600 dark:text-[#8b9ab4] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
           >
             Custom-built projects with report, PPT, and source code — all delivered directly to your inbox within 24–72 hours.
           </motion.p>
@@ -190,7 +190,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => navigate('/track')}
-              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-base sm:text-lg shadow-sm transition-all duration-300"
+              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-[#0d1117] backdrop-blur-sm hover:bg-white dark:hover:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] text-slate-700 dark:text-[#e8edf5] font-semibold text-base sm:text-lg shadow-sm transition-all duration-300"
             >
               Track My Project
             </button>
@@ -207,7 +207,7 @@ const Home = () => {
             {['Code + Report + PPT', '100% Original Work', '24-72h Delivery'].map((badge) => (
               <span
                 key={badge}
-                className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-slate-200/80 dark:border-slate-700 shadow-sm"
+                className="text-xs sm:text-sm text-slate-600 dark:text-[#8b9ab4] font-medium bg-white/90 dark:bg-[#0d1117] backdrop-blur-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-slate-200/80 dark:border-[#1c2a3e] shadow-sm"
               >
                 ✅ {badge}
               </span>
@@ -228,13 +228,13 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 text-center hover:border-blue-400 dark:hover:border-blue-500/50 hover:shadow-lg transition-all duration-300 shadow-sm"
+                className="bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200/90 dark:border-[#1c2a3e] rounded-2xl p-5 sm:p-6 text-center hover:border-blue-400 dark:hover:border-[#2a4a6e] hover:shadow-lg transition-all duration-300 shadow-sm"
               >
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50/90 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mx-auto mb-2.5 sm:mb-3 text-blue-600 dark:text-blue-400">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50/90 dark:bg-[#0a1628] border border-blue-100 dark:border-[#1c3a6e] flex items-center justify-center mx-auto mb-2.5 sm:mb-3 text-blue-600 dark:text-[#4f8ef7]">
                   <Icon size={20} />
                 </div>
-                <p className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-0.5 sm:mb-1">{value}</p>
-                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">{label}</p>
+                <p className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-[#e8edf5] mb-0.5 sm:mb-1">{value}</p>
+                <p className="text-slate-500 dark:text-[#8b9ab4] text-xs sm:text-sm font-medium">{label}</p>
               </motion.div>
             ))}
           </div>
@@ -264,15 +264,15 @@ const Home = () => {
                 viewport={VIEWPORT}
                 custom={i}
                 whileHover={{ y: -4 }}
-                className="group bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-400 dark:hover:border-blue-500/50 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm"
+                className="group bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200/90 dark:border-[#1c2a3e] rounded-2xl p-5 sm:p-6 hover:border-blue-400 dark:hover:border-[#2a4a6e] hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm"
                 onClick={handleProjectSubmitClick}
               >
                 <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${color} border flex items-center justify-center mb-4 group-hover:scale-105 transition-transform shadow-sm`}>
                   <Icon size={20} />
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-base sm:text-lg mb-1.5 sm:mb-2">{title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">{desc}</p>
-                <span className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs font-bold">{price}</span>
+                <h3 className="font-bold text-slate-900 dark:text-[#e8edf5] text-base sm:text-lg mb-1.5 sm:mb-2">{title}</h3>
+                <p className="text-slate-600 dark:text-[#8b9ab4] text-xs sm:text-sm leading-relaxed mb-4">{desc}</p>
+                <span className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-[#0a1628] border border-blue-200 dark:border-[#1c3a6e] text-blue-700 dark:text-[#4f8ef7] text-xs font-bold">{price}</span>
               </motion.div>
             ))}
           </div>
@@ -301,17 +301,17 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="relative text-center bg-white/85 dark:bg-slate-800/85 backdrop-blur-md sm:bg-transparent dark:sm:bg-transparent p-5 sm:p-0 rounded-2xl sm:rounded-none border sm:border-none border-slate-200/70 dark:border-slate-700/70 shadow-sm sm:shadow-none"
+                className="relative text-center bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl sm:bg-transparent dark:sm:bg-transparent p-5 sm:p-0 rounded-2xl sm:rounded-none border sm:border-none border-slate-200/70 dark:border-[#1c2a3e] shadow-sm sm:shadow-none"
               >
                 {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-8 left-[60%] w-full h-px bg-slate-200 dark:bg-slate-700" />
                 )}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200 dark:border-[#1c2a3e] shadow-sm flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-xl sm:text-2xl font-black text-blue-600 dark:text-[#4f8ef7]">
                   {num}
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base mb-1.5 sm:mb-2">{title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-slate-900 dark:text-[#e8edf5] text-sm sm:text-base mb-1.5 sm:mb-2">{title}</h3>
+                <p className="text-slate-600 dark:text-[#8b9ab4] text-xs sm:text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -338,7 +338,7 @@ const Home = () => {
                 setReviewSubmitted(false);
                 setReviewModalOpen(true);
               }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/90 dark:bg-[#0d1117] backdrop-blur-sm border border-slate-200 dark:border-[#1c2a3e] hover:border-blue-500 dark:hover:border-[#2a4a6e] text-slate-800 dark:text-[#e8edf5] hover:text-blue-600 dark:hover:text-[#4f8ef7] text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
             >
               <PenSquare size={16} className="text-blue-600 dark:text-blue-400" />
               Write a Review
@@ -354,21 +354,21 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-300 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-300 shadow-sm flex flex-col justify-between"
+                className="bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200/90 dark:border-[#1c2a3e] rounded-2xl p-5 sm:p-6 hover:border-blue-300 dark:hover:border-[#2a4a6e] hover:shadow-md transition-all duration-300 shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex gap-0.5 mb-3 sm:mb-4">
                     {[...Array(rating || 5)].map((_, j) => <Star key={j} size={14} className="text-amber-400 fill-amber-400" />)}
                   </div>
-                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 italic">"{text}"</p>
+                  <p className="text-slate-700 dark:text-[#c5d0e0] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 italic">"{text}"</p>
                 </div>
-                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-700/60 mt-auto">
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 dark:border-[#1c2a3e] mt-auto">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs font-bold shadow-sm flex-shrink-0">
                     {avatar || name.slice(0, 2).toUpperCase()}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-slate-900 dark:text-white font-semibold text-xs sm:text-sm truncate">{name}</p>
-                    <p className="text-slate-500 dark:text-slate-400 text-[11px] sm:text-xs line-clamp-1">{college}</p>
+                    <p className="text-slate-900 dark:text-[#e8edf5] font-semibold text-xs sm:text-sm truncate">{name}</p>
+                    <p className="text-slate-500 dark:text-[#8b9ab4] text-[11px] sm:text-xs line-clamp-1">{college}</p>
                   </div>
                 </div>
               </motion.div>
@@ -396,7 +396,7 @@ const Home = () => {
                 Project Request
               </span>
             </h2>
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto px-2">
+            <p className="text-slate-600 dark:text-[#8b9ab4] text-sm sm:text-lg max-w-2xl mx-auto px-2">
               Tell us about your project and get a custom quote within 24 hours. 100% original work with full documentation.
             </p>
           </motion.div>
@@ -426,12 +426,12 @@ const Home = () => {
                   whileInView="visible"
                   viewport={VIEWPORT}
                   custom={i * 0.08}
-                  className="flex items-start gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300"
+                  className="flex items-start gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200/80 dark:border-[#1c2a3e] shadow-sm hover:border-slate-300 dark:hover:border-[#2a4a6e] transition-all duration-300"
                 >
                   <span className="text-xl sm:text-2xl flex-shrink-0">{emoji}</span>
                   <div>
-                    <p className="text-slate-900 dark:text-white font-semibold text-xs sm:text-sm">{title}</p>
-                    <p className="text-slate-500 dark:text-slate-400 text-[11px] sm:text-xs mt-0.5 leading-relaxed">{desc}</p>
+                    <p className="text-slate-900 dark:text-[#e8edf5] font-semibold text-xs sm:text-sm">{title}</p>
+                    <p className="text-slate-500 dark:text-[#8b9ab4] text-[11px] sm:text-xs mt-0.5 leading-relaxed">{desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -439,13 +439,13 @@ const Home = () => {
 
             {/* Right — CTA Card */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={VIEWPORT} custom={1}>
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center shadow-xl shadow-slate-200/40 dark:shadow-slate-950/50">
-                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/60 flex items-center justify-center mx-auto mb-4 sm:mb-5 p-3.5 shadow-sm">
+              <div className="relative bg-white/95 dark:bg-[#0d1117] backdrop-blur-xl border border-slate-200/90 dark:border-[#1c2a3e] rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center shadow-xl shadow-slate-200/40 dark:shadow-[0_8px_40px_rgba(0,0,0,0.7)]">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-blue-50 dark:bg-[#0a1628] border border-blue-100 dark:border-[#1c3a6e] flex items-center justify-center mx-auto mb-4 sm:mb-5 p-3.5 shadow-sm">
                   <span className="text-3xl sm:text-4xl">🎓</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-1.5 sm:mb-2">Ready to Submit?</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mb-5 sm:mb-6 leading-relaxed max-w-sm mx-auto">
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-[#e8edf5] mb-1.5 sm:mb-2">Ready to Submit?</h3>
+                <p className="text-slate-600 dark:text-[#8b9ab4] text-xs sm:text-sm mb-5 sm:mb-6 leading-relaxed max-w-sm mx-auto">
                   Join 50+ students who got their projects done professionally. Fill the form and get a quote in minutes.
                 </p>
 
@@ -457,9 +457,9 @@ const Home = () => {
                     { type: 'Android', price: '₹799+' },
                     { type: 'Final Year', price: '₹1499+' },
                   ].map(({ type, price }) => (
-                    <div key={type} className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200/70 dark:border-slate-700/70 rounded-xl py-2 px-2.5 sm:py-2.5 sm:px-3">
-                      <p className="text-slate-500 dark:text-slate-400 text-[11px] sm:text-xs">{type}</p>
-                      <p className="text-blue-600 dark:text-blue-400 font-bold text-xs sm:text-sm">{price}</p>
+                    <div key={type} className="bg-slate-50 dark:bg-[#111827] border border-slate-200/70 dark:border-[#1c2a3e] rounded-xl py-2 px-2.5 sm:py-2.5 sm:px-3">
+                      <p className="text-slate-500 dark:text-[#8b9ab4] text-[11px] sm:text-xs">{type}</p>
+                      <p className="text-blue-600 dark:text-[#4f8ef7] font-bold text-xs sm:text-sm">{price}</p>
                     </div>
                   ))}
                 </div>
@@ -483,9 +483,9 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-slate-200/80 dark:border-slate-800 py-6 sm:py-8 px-4 text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-colors duration-200">
-        <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
-          © 2024 ProBuild · Student Project Assistance Platform · Made with ❤️ by <span className="text-blue-600 dark:text-blue-400 font-medium">Shubham Torkad</span>
+      <footer className="relative z-10 border-t border-slate-200/80 dark:border-[#1c2a3e] py-6 sm:py-8 px-4 text-center bg-white/80 dark:bg-[#05070f]/90 backdrop-blur-md transition-colors duration-200">
+        <p className="text-slate-500 dark:text-[#8b9ab4] text-xs sm:text-sm">
+          © 2024 ProBuild · Student Project Assistance Platform · Made with ❤️ by <span className="text-blue-600 dark:text-[#4f8ef7] font-medium">Shubham Torkad</span>
         </p>
       </footer>
 
@@ -499,7 +499,7 @@ const Home = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setReviewModalOpen(false)}
-              className="fixed inset-0 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm"
+              className="fixed inset-0 bg-slate-900/60 dark:bg-[#000]/85 backdrop-blur-sm"
             />
 
             {/* Modal Dialog */}
@@ -508,7 +508,7 @@ const Home = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 my-8 max-h-[92vh] overflow-y-auto"
+              className="relative w-full max-w-lg bg-white dark:bg-[#0d1117] border border-slate-200 dark:border-[#1c2a3e] rounded-3xl p-6 sm:p-8 shadow-2xl dark:shadow-[0_8px_40px_rgba(0,0,0,0.8)] z-10 my-8 max-h-[92vh] overflow-y-auto"
             >
               {/* Close Button */}
               <button
@@ -524,29 +524,28 @@ const Home = () => {
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4"
+                    className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-[#071a10] border border-emerald-200 dark:border-[#0d3a20] text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4"
                   >
                     <Check size={32} />
                   </motion.div>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1.5">Review Submitted!</h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm">Thank you for sharing your experience. Your review is now live!</p>
+                  <h3 className="text-xl font-black text-slate-900 dark:text-[#e8edf5] mb-1.5">Review Submitted!</h3>
+                  <p className="text-slate-600 dark:text-[#8b9ab4] text-sm">Thank you for sharing your experience. Your review is now live!</p>
                 </div>
               ) : (
                 <>
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-11 h-11 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                    <div className="w-11 h-11 rounded-2xl bg-blue-50 dark:bg-[#0a1628] border border-blue-200/80 dark:border-[#1c3a6e] flex items-center justify-center text-blue-600 dark:text-[#4f8ef7] flex-shrink-0">
                       <PenSquare size={20} />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-black text-slate-900 dark:text-white">Share Your Review</h3>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs">Help other students know about our service</p>
+                      <h3 className="text-xl font-black text-slate-900 dark:text-[#e8edf5]">Share Your Review</h3>
+                    <p className="text-slate-500 dark:text-[#8b9ab4] text-xs">Help other students know about our service</p>
                     </div>
                   </div>
 
                   <form onSubmit={handleReviewSubmit} className="space-y-4">
                     {/* Star Rating Picker */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-2">
+                      <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-2">
                         Your Rating
                       </label>
                       <div className="flex items-center gap-2">
@@ -575,7 +574,7 @@ const Home = () => {
 
                     {/* Name */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1.5">
                         Your Name
                       </label>
                       <input
@@ -586,13 +585,13 @@ const Home = () => {
                           setNewReview({ ...newReview, name: e.target.value });
                           setReviewError('');
                         }}
-                        className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                        className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl px-4 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                       />
                     </div>
 
                     {/* College */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1.5">
                         College / University
                       </label>
                       <input
@@ -603,13 +602,13 @@ const Home = () => {
                           setNewReview({ ...newReview, college: e.target.value });
                           setReviewError('');
                         }}
-                        className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                        className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl px-4 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                       />
                     </div>
 
                     {/* Review text */}
                     <div>
-                      <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-semibold text-slate-600 dark:text-[#8b9ab4] uppercase tracking-wider mb-1.5">
                         Review / Feedback
                       </label>
                       <textarea
@@ -620,7 +619,7 @@ const Home = () => {
                           setNewReview({ ...newReview, text: e.target.value });
                           setReviewError('');
                         }}
-                        className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm resize-none"
+                      className="w-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1c2a3e] rounded-xl px-4 py-2.5 text-slate-900 dark:text-[#e8edf5] placeholder-slate-400 dark:placeholder-[#4a5a72] text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm resize-none"
                       />
                     </div>
 
@@ -629,10 +628,10 @@ const Home = () => {
                     )}
 
                     <div className="flex gap-3 pt-2">
-                      <button
+                    <button
                         type="button"
                         onClick={() => setReviewModalOpen(false)}
-                        className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-sm transition-all"
+                        className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-[#1c2a3e] text-slate-700 dark:text-[#8b9ab4] hover:bg-slate-50 dark:hover:bg-[#111827] font-semibold text-sm transition-all"
                       >
                         Cancel
                       </button>

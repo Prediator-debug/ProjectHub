@@ -20,24 +20,32 @@ const AppRoutes = () => {
   const isAuthPage = ['/login', '/register', '/forgot-password'].includes(location.pathname);
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] dark:bg-[#090d16] text-slate-900 dark:text-slate-100 transition-colors duration-200 overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#f5f7fa] dark:bg-[#05070f] text-slate-900 dark:text-[#e8edf5] transition-colors duration-300 overflow-x-hidden">
       {/* ===== GLOBAL LIVE AMBIENT BACKGROUND OVERLAY ===== */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Crisp Tech Dot Matrix Grid across the entire app */}
-        <div className="absolute inset-0 bg-dot-grid opacity-75 dark:opacity-35" />
+        {/* Dot Matrix Grid */}
+        <div className="absolute inset-0 bg-dot-grid opacity-60 dark:opacity-100" />
 
-        {/* Ambient Floating Gradient Orbs */}
-        {/* Orb 1: Top-Left Cyan/Sky glowing aura */}
-        <div className="absolute -top-32 -left-32 w-[420px] sm:w-[650px] h-[420px] sm:h-[650px] rounded-full bg-gradient-to-br from-blue-400/30 via-sky-300/25 to-indigo-300/15 dark:from-blue-600/20 dark:via-sky-900/15 dark:to-transparent blur-[100px] sm:blur-[130px] animate-float-slow" />
+        {/* LIGHT MODE ORBS — soft blue/indigo */}
+        <div className="dark:hidden absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-blue-300/25 via-sky-200/20 to-transparent blur-[120px] animate-float-slow" />
+        <div className="dark:hidden absolute top-[20%] -right-40 w-[450px] h-[450px] rounded-full bg-gradient-to-bl from-indigo-300/20 via-purple-200/15 to-transparent blur-[120px] animate-float-reverse" />
+        <div className="dark:hidden absolute bottom-0 left-[20%] w-[500px] h-[400px] rounded-full bg-gradient-to-tr from-cyan-200/20 via-blue-200/15 to-transparent blur-[100px] animate-float-drift" />
 
-        {/* Orb 2: Top-Right Violet/Indigo glowing aura */}
-        <div className="absolute top-[15%] -right-32 w-[380px] sm:w-[600px] h-[380px] sm:h-[600px] rounded-full bg-gradient-to-bl from-indigo-400/25 via-purple-300/20 to-blue-200/15 dark:from-indigo-600/20 dark:via-purple-900/15 dark:to-transparent blur-[100px] sm:blur-[130px] animate-float-reverse" />
+        {/* DARK MODE ORBS — obsidian palette: deep teal + electric blue + violet */}
+        {/* Orb 1: Top-left — electric indigo core */}
+        <div className="hidden dark:block absolute -top-48 -left-48 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#1a3a6e]/70 via-[#0f2244]/50 to-transparent blur-[140px] animate-float-slow" />
 
-        {/* Orb 3: Mid-page ambient azure light */}
-        <div className="absolute top-[50%] -left-32 w-[400px] sm:w-[620px] h-[400px] sm:h-[620px] rounded-full bg-gradient-to-tr from-cyan-400/25 via-blue-300/20 to-transparent dark:from-cyan-900/15 dark:to-transparent blur-[110px]" />
+        {/* Orb 2: Top-right — deep teal/cyan edge glow */}
+        <div className="hidden dark:block absolute -top-20 -right-40 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-[#0a2e3d]/80 via-[#052030]/60 to-transparent blur-[130px] animate-float-reverse" />
 
-        {/* Orb 4: Bottom ambient warmth & glow */}
-        <div className="absolute top-[80%] -right-32 w-[420px] sm:w-[650px] h-[420px] sm:h-[650px] rounded-full bg-gradient-to-tl from-blue-500/25 via-indigo-400/20 to-transparent dark:from-blue-700/15 dark:to-transparent blur-[120px] animate-float-slow" />
+        {/* Orb 3: Mid-left — subtle violet accent */}
+        <div className="hidden dark:block absolute top-[40%] -left-32 w-[400px] h-[500px] rounded-full bg-gradient-to-tr from-[#1a0a3e]/60 via-[#0d0520]/40 to-transparent blur-[120px] animate-float-drift" />
+
+        {/* Orb 4: Bottom-right — electric blue warmth */}
+        <div className="hidden dark:block absolute bottom-[-10%] -right-32 w-[550px] h-[450px] rounded-full bg-gradient-to-tl from-[#0e2456]/70 via-[#071530]/50 to-transparent blur-[140px] animate-float-slow" />
+
+        {/* Orb 5: Bottom-left — teal accent */}
+        <div className="hidden dark:block absolute bottom-[5%] -left-20 w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-[#082535]/60 via-transparent to-transparent blur-[110px] animate-float-reverse" />
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
