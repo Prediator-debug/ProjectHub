@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
+import AuthModal from './components/AuthModal';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -14,30 +15,35 @@ import './index.css';
 
 const AppRoutes = () => {
   const { currentUser } = useAuth();
+  const location = useLocation();
+  const isAuthPage = ['/login', '/register', '/forgot-password'].includes(location.pathname);
 
   return (
     <div className="app-container">
-      {currentUser && <Navbar />}
-      <main style={{ paddingTop: currentUser ? '64px' : '0', minHeight: '100vh' }}>
+      {!isAuthPage && <Navbar />}
+      <main style={{ paddingTop: isAuthPage ? '0' : '64px', minHeight: '100vh' }}>
         <Routes>
-          {/* Public routes */}
+          {/* Public visitor routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/track" element={<StudentTracking />} />
+
+          {/* Public auth routes (redirect to home if already logged in) */}
           <Route path="/login" element={!currentUser ? <Login /> : <Navigate to="/" replace />} />
           <Route path="/register" element={!currentUser ? <Register /> : <Navigate to="/" replace />} />
           <Route path="/forgot-password" element={!currentUser ? <ForgotPassword /> : <Navigate to="/" replace />} />
 
           {/* Protected student routes */}
-          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/submit" element={<ProtectedRoute><SubmitForm /></ProtectedRoute>} />
           <Route path="/dashboard" element={<ProtectedRoute><StudentDashboard /></ProtectedRoute>} />
-          <Route path="/track" element={<ProtectedRoute><StudentTracking /></ProtectedRoute>} />
 
           {/* Protected admin routes */}
           <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
 
-          {/* Catch-all */}
-          <Route path="*" element={<Navigate to={currentUser ? '/' : '/login'} replace />} />
+          {/* Catch-all redirects to Home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      <AuthModal />
     </div>
   );
 };

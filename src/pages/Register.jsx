@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, User, UserPlus, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -19,6 +19,7 @@ const getPasswordStrength = (password) => {
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { register } = useAuth();
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +45,10 @@ const Register = () => {
     setLoading(true);
     const result = await register(form.name, form.email, form.password);
     setLoading(false);
-    if (result.success) { navigate('/dashboard'); }
+    if (result.success) {
+      const fromPath = location.state?.from?.pathname;
+      navigate(fromPath || '/dashboard', { replace: true });
+    }
     else { setError(result.error); }
   };
 

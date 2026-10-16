@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, EyeOff, Mail, Lock, LogIn } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -7,6 +7,7 @@ import { ADMIN_EMAIL } from '../firebase/auth';
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +26,8 @@ const Login = () => {
     const result = await login(form.email, form.password);
     setLoading(false);
     if (result.success) {
-      navigate(result.user.email === ADMIN_EMAIL ? '/admin' : '/dashboard');
+      const fromPath = location.state?.from?.pathname;
+      navigate(result.user.email === ADMIN_EMAIL ? '/admin' : (fromPath || '/dashboard'), { replace: true });
     } else {
       setError(result.error);
     }

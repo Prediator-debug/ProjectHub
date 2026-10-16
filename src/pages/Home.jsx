@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { ArrowRight, CheckCircle, Globe, Brain, Smartphone, GraduationCap, Star, Zap, Clock, ThumbsUp } from 'lucide-react';
 
 const fadeUp = {
@@ -38,6 +39,15 @@ const stats = [
 
 const Home = () => {
   const navigate = useNavigate();
+  const { currentUser, openAuthModal } = useAuth();
+
+  const handleProjectSubmitClick = () => {
+    if (!currentUser) {
+      openAuthModal('login', '/submit');
+    } else {
+      navigate('/submit');
+    }
+  };
 
   return (
     <div className="bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 min-h-screen text-white">
@@ -73,7 +83,7 @@ const Home = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3}
             className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => navigate('/submit')} id="hero-cta"
+            <button onClick={handleProjectSubmitClick} id="hero-cta"
               className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white font-bold text-lg flex items-center justify-center gap-3 shadow-glow hover:shadow-glow-lg transition-all duration-300">
               Get Started Now
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -125,7 +135,7 @@ const Home = () => {
               <motion.div key={title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={VIEWPORT} custom={i}
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-white/20 hover:shadow-card transition-all duration-300 cursor-pointer"
-                onClick={() => navigate('/submit')}>
+                onClick={handleProjectSubmitClick}>
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-4 shadow-glow group-hover:scale-110 transition-transform`}>
                   <Icon size={22} className="text-white" />
                 </div>
@@ -271,7 +281,7 @@ const Home = () => {
 
                   <button
                     id="bottom-cta"
-                    onClick={() => navigate('/submit')}
+                    onClick={handleProjectSubmitClick}
                     className="group w-full py-4 rounded-2xl bg-gradient-to-r from-brand-500 to-purple-600 hover:from-brand-400 hover:to-purple-500 text-white font-black text-lg flex items-center justify-center gap-3 shadow-glow hover:shadow-glow-lg transition-all duration-300 mb-3"
                   >
                     Submit Your Project Request

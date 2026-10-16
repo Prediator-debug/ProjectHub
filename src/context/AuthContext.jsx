@@ -21,6 +21,24 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  const [authModal, setAuthModal] = useState({
+    isOpen: false,
+    tab: 'login',
+    redirectTo: '/submit',
+  });
+
+  const openAuthModal = (tab = 'login', redirectTo = '/submit') => {
+    setAuthModal({ isOpen: true, tab, redirectTo });
+  };
+
+  const closeAuthModal = () => {
+    setAuthModal(prev => ({ ...prev, isOpen: false }));
+  };
+
+  const setAuthModalTab = (tab) => {
+    setAuthModal(prev => ({ ...prev, tab }));
+  };
+
   const login = async (email, password) => loginUser(email, password);
   const register = async (name, email, password) => registerUser(name, email, password);
   const logout = async () => logoutUser();
@@ -36,6 +54,10 @@ export const AuthProvider = ({ children }) => {
     logout,
     sendResetEmail,
     loading,
+    authModal,
+    openAuthModal,
+    closeAuthModal,
+    setAuthModalTab,
   };
 
   return (
