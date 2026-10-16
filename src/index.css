@@ -60,7 +60,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   max-width: 100vw;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* =============================================
@@ -75,27 +74,36 @@ html.dark ::-webkit-scrollbar-thumb { background: #1c2a3e; }
 html.dark ::-webkit-scrollbar-thumb:hover { background: #2a3f59; }
 
 /* =============================================
-   AMBIENT ANIMATION KEYFRAMES
+   AMBIENT ANIMATION KEYFRAMES (GPU ACCELERATED)
    ============================================= */
 @keyframes float-slow {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(30px, -25px) scale(1.06); }
+  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(25px, -20px, 0) scale(1.04); }
 }
 
 @keyframes float-reverse {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(-35px, 20px) scale(0.96); }
+  0%, 100% { transform: translate3d(0px, 0px, 0) scale(1); }
+  50% { transform: translate3d(-25px, 15px, 0) scale(0.97); }
 }
 
 @keyframes float-drift {
-  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-  33% { transform: translate(20px, -30px) rotate(2deg); }
-  66% { transform: translate(-15px, 10px) rotate(-1deg); }
+  0%, 100% { transform: translate3d(0px, 0px, 0) rotate(0deg); }
+  33% { transform: translate3d(15px, -20px, 0) rotate(1.5deg); }
+  66% { transform: translate3d(-10px, 10px, 0) rotate(-1deg); }
 }
 
-.animate-float-slow { animation: float-slow 18s ease-in-out infinite; }
-.animate-float-reverse { animation: float-reverse 22s ease-in-out infinite; }
-.animate-float-drift { animation: float-drift 28s ease-in-out infinite; }
+.animate-float-slow {
+  animation: float-slow 18s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-float-reverse {
+  animation: float-reverse 22s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-float-drift {
+  animation: float-drift 28s ease-in-out infinite;
+  will-change: transform;
+}
 
 /* =============================================
    BACKGROUND PATTERNS
@@ -142,19 +150,4 @@ html.dark .bg-grid-lines {
     border-color: rgba(79, 142, 247, 0.3);
     box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(79,142,247,0.12) inset;
   }
-}
-
-/* =============================================
-   THEME TRANSITION — smooth global
-   ============================================= */
-*, *::before, *::after {
-  transition-property: background-color, border-color, color;
-  transition-duration: 200ms;
-  transition-timing-function: ease;
-}
-
-/* But NOT for animations that shouldn't be interrupted */
-.animate-float-slow, .animate-float-reverse, .animate-float-drift,
-[class*="animate-"] {
-  transition: none;
 }

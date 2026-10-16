@@ -87,7 +87,7 @@ const Navbar = () => {
             onClick={toggleTheme}
             aria-label="Toggle color theme"
             title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            className="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 dark:border-[#1c2a3e] bg-white dark:bg-[#0d1117] text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-[#111827] shadow-sm transition-all"
+            className="flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 dark:border-[#1c2a3e] bg-white dark:bg-[#0d1117] text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-[#111827] shadow-sm transition-transform active:scale-90 hover:scale-105"
           >
             {isDark ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} className="text-slate-600" />}
           </button>
@@ -126,7 +126,7 @@ const Navbar = () => {
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="flex items-center justify-center w-9 h-9 rounded-xl border border-slate-200 dark:border-[#1c2a3e] bg-white dark:bg-[#0d1117] text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-[#111827] transition-all shadow-sm"
+            className="flex items-center justify-center w-9 h-9 rounded-xl border border-slate-200 dark:border-[#1c2a3e] bg-white dark:bg-[#0d1117] text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-[#111827] transition-transform active:scale-90 hover:scale-105 shadow-sm"
           >
             {isDark ? <Sun size={17} className="text-amber-400" /> : <Moon size={17} className="text-slate-600" />}
           </button>

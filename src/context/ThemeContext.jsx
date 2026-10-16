@@ -20,15 +20,25 @@ export const ThemeProvider = ({ children }) => {
     } else {
       root.classList.remove('dark');
     }
-    try {
-      localStorage.setItem('probuild_theme', theme);
-    } catch (e) {
-      console.warn('Could not save theme preference:', e);
-    }
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      // Immediate synchronous DOM mutation for 0ms visual response
+      const root = document.documentElement;
+      if (next === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      try {
+        localStorage.setItem('probuild_theme', next);
+      } catch (e) {
+        console.warn('Could not save theme preference:', e);
+      }
+      return next;
+    });
   };
 
   const isDark = theme === 'dark';
