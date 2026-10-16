@@ -137,29 +137,7 @@ const Home = () => {
   };
 
   return (
-    <div className="relative min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-200">
-
-      {/* ===== LIVE AMBIENT BACKGROUND OVERLAYS ===== */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Subtle dot matrix across the whole screen */}
-        <div className="absolute inset-0 bg-dot-grid opacity-60 dark:opacity-25" />
-
-        {/* Ambient Floating Gradient Orbs */}
-        {/* Orb 1: Top-Left Cyan/Sky glowing orb */}
-        <div className="absolute -top-28 -left-28 w-[380px] sm:w-[620px] h-[380px] sm:h-[620px] rounded-full bg-gradient-to-br from-blue-400/25 via-sky-300/20 to-indigo-300/10 dark:from-blue-600/15 dark:via-sky-800/10 dark:to-transparent blur-[90px] sm:blur-[130px] animate-float-slow" />
-
-        {/* Orb 2: Top-Right Violet/Indigo glowing orb */}
-        <div className="absolute top-[18%] -right-28 w-[340px] sm:w-[550px] h-[340px] sm:h-[550px] rounded-full bg-gradient-to-bl from-indigo-300/25 via-purple-300/15 to-blue-200/10 dark:from-indigo-600/15 dark:via-purple-900/10 dark:to-transparent blur-[90px] sm:blur-[120px] animate-float-reverse" />
-
-        {/* Orb 3: Mid-page ambient azure light (under Services/How it works) */}
-        <div className="absolute top-[48%] -left-32 w-[380px] sm:w-[650px] h-[380px] sm:h-[650px] rounded-full bg-gradient-to-tr from-cyan-300/20 via-blue-200/15 to-transparent dark:from-cyan-900/10 dark:to-transparent blur-[110px]" />
-
-        {/* Orb 4: Testimonials & Bottom CTA ambient warmth */}
-        <div className="absolute top-[75%] -right-28 w-[400px] sm:w-[620px] h-[400px] sm:h-[620px] rounded-full bg-gradient-to-tl from-blue-400/20 via-indigo-300/15 to-transparent dark:from-blue-700/10 dark:to-transparent blur-[120px] animate-float-slow" />
-
-        {/* Soft radial vignette so content stays razor-sharp */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-100/40 dark:to-slate-950/40" />
-      </div>
+    <div className="relative min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden bg-transparent">
 
       {/* ===== HERO ===== */}
       <section className="relative z-10 min-h-[80vh] sm:min-h-[85vh] flex items-center justify-center overflow-hidden px-4 pt-16 sm:pt-20 pb-12 sm:pb-16">
@@ -302,7 +280,7 @@ const Home = () => {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="relative z-10 py-14 sm:py-20 px-4 bg-slate-50/60 dark:bg-slate-900/50 backdrop-blur-sm border-y border-slate-200/70 dark:border-slate-800/80">
+      <section className="relative z-10 py-14 sm:py-20 px-4 border-y border-slate-200/60 dark:border-slate-800/80">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -400,7 +378,7 @@ const Home = () => {
       </section>
 
       {/* ===== SUBMIT YOUR PROJECT REQUEST ===== */}
-      <section className="relative z-10 py-16 sm:py-24 px-4 bg-slate-50/50 dark:bg-slate-900/40 backdrop-blur-sm" id="submit-request">
+      <section className="relative z-10 py-16 sm:py-24 px-4" id="submit-request">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={fadeUp}

@@ -80,21 +80,21 @@ const SubmitForm = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-transparent flex items-center justify-center px-4 text-slate-900 dark:text-slate-100">
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full text-center bg-white border border-slate-200/90 rounded-3xl p-10 shadow-xl">
-          <div className="w-20 h-20 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mx-auto mb-5">
-            <CheckCircle size={40} className="text-emerald-600" />
+          className="max-w-md w-full text-center bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-3xl p-10 shadow-xl">
+          <div className="w-20 h-20 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-5">
+            <CheckCircle size={40} />
           </div>
-          <h2 className="text-2xl font-black text-slate-900 mb-2">Project Submitted!</h2>
-          <p className="text-slate-600 mb-8 leading-relaxed">Your project request has been received. You'll hear from us within 24 hours.</p>
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Project Submitted!</h2>
+          <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">Your project request has been received. You'll hear from us within 24 hours.</p>
           <div className="flex flex-col gap-3">
             <button onClick={() => navigate('/dashboard')}
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold shadow-md transition-all">
               View My Dashboard
             </button>
             <button onClick={() => { setSubmitted(false); setFormData({ name: currentUser?.displayName || '', email: currentUser?.email || '', college: '', domain: 'Web Dev', description: '', deadline: '', budget: '' }); }}
-              className="w-full py-3 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium transition-all">
+              className="w-full py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 font-medium transition-all">
               Submit Another
             </button>
           </div>
@@ -104,10 +104,10 @@ const SubmitForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <div className="min-h-screen bg-transparent px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 sm:p-8 shadow-card">
+          className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-3xl p-5 sm:p-8 shadow-card">
           <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Submit Project Request</h1>
           <p className="text-slate-600 dark:text-slate-300 text-sm mb-7">Fill in the details below and get a quote within 24 hours.</p>
 

@@ -26,11 +26,11 @@ const getStatusIndex = (status) => STATUS_STEPS.indexOf(status);
 
 const StatusBadge = ({ status }) => {
   const config = {
-    Pending: 'bg-amber-50 border-amber-200/80 text-amber-700',
-    Accepted: 'bg-blue-50 border-blue-200/80 text-blue-700',
-    'In Progress': 'bg-purple-50 border-purple-200/80 text-purple-700',
-    Completed: 'bg-emerald-50 border-emerald-200/80 text-emerald-700',
-    Rejected: 'bg-red-50 border-red-200/80 text-red-700',
+    Pending: 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/80 dark:border-amber-800/80 text-amber-700 dark:text-amber-300',
+    Accepted: 'bg-blue-50 dark:bg-blue-950/60 border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300',
+    'In Progress': 'bg-purple-50 dark:bg-purple-950/60 border-purple-200/80 dark:border-purple-800/80 text-purple-700 dark:text-purple-300',
+    Completed: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300',
+    Rejected: 'bg-red-50 dark:bg-red-950/60 border-red-200/80 dark:border-red-800/80 text-red-700 dark:text-red-300',
   };
   return (
     <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs font-semibold ${config[status] || config.Pending}`}>
@@ -41,7 +41,9 @@ const StatusBadge = ({ status }) => {
 
 const PaymentBadge = ({ status }) => (
   <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs font-semibold ${
-    status === 'Paid' ? 'bg-emerald-50 border-emerald-200/80 text-emerald-700' : 'bg-amber-50 border-amber-200/80 text-amber-700'
+    status === 'Paid'
+      ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300'
+      : 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/80 dark:border-amber-800/80 text-amber-700 dark:text-amber-300'
   }`}>
     {status === 'Paid' ? <CheckCircle size={12} /> : <Clock size={12} />}
     {status}
@@ -61,18 +63,18 @@ const ProgressBar = ({ status }) => {
               i < idx
                 ? 'bg-blue-600 border-blue-600 text-white'
                 : i === idx
-                ? 'bg-blue-50 border-blue-600 text-blue-600'
-                : 'bg-slate-100 border-slate-300 text-slate-400'
+                ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-600 text-blue-600 dark:text-blue-400'
+                : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500'
             }`}>
               {i < idx ? <CheckCircle size={12} /> : i + 1}
             </div>
-            <span className={`text-[10px] mt-1 font-medium hidden sm:block ${i <= idx ? 'text-blue-600 font-semibold' : 'text-slate-400'}`}>
+            <span className={`text-[10px] mt-1 font-medium hidden sm:block ${i <= idx ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-slate-400 dark:text-slate-500'}`}>
               {step}
             </span>
           </div>
         ))}
       </div>
-      <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden">
+      <div className="relative h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
         <motion.div
           className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"
           initial={{ width: 0 }}
@@ -179,7 +181,7 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
               href={project.deliveredLink}
               target="_blank"
               rel="noreferrer"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs sm:text-sm font-semibold transition-all shadow-sm"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-xs sm:text-sm font-semibold transition-all shadow-sm"
             >
               <Download size={15} /> Download Deliverables
             </a>
@@ -187,7 +189,7 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
 
           <button
             onClick={() => setExpanded(!expanded)}
-            className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 text-xs sm:text-sm transition-colors sm:ml-auto font-medium"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-700/80 text-slate-600 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm transition-colors sm:ml-auto font-medium"
           >
             {expanded ? <><ChevronUp size={15} /> Less</> : <><ChevronDown size={15} /> Details</>}
           </button>
@@ -201,31 +203,31 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-slate-50/70 border-t border-slate-100"
+            className="overflow-hidden bg-slate-50/70 dark:bg-slate-900/60 border-t border-slate-100 dark:border-slate-700/60"
           >
             <div className="px-4 sm:px-6 pb-4 pt-3.5 grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
               <div>
-                <span className="text-slate-500 block text-[11px] sm:text-xs">Agreed Budget</span>
-                <span className="text-slate-900 font-semibold">₹{project.budget}</span>
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px] sm:text-xs">Agreed Budget</span>
+                <span className="text-slate-900 dark:text-white font-semibold">₹{project.budget}</span>
               </div>
               <div>
-                <span className="text-slate-500 block text-[11px] sm:text-xs">Target Deadline</span>
-                <span className="text-slate-900 font-semibold">{project.deadline || 'Flexible'}</span>
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px] sm:text-xs">Target Deadline</span>
+                <span className="text-slate-900 dark:text-white font-semibold">{project.deadline || 'Flexible'}</span>
               </div>
               <div className="col-span-2">
-                <span className="text-slate-500 block text-[11px] sm:text-xs mb-1">Project Description</span>
-                <p className="text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-200 text-xs">
+                <span className="text-slate-500 dark:text-slate-400 block text-[11px] sm:text-xs mb-1">Project Description</span>
+                <p className="text-slate-700 dark:text-slate-200 leading-relaxed bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
                   {project.description}
                 </p>
               </div>
               {project.deliveredLink && (
                 <div className="col-span-2">
-                  <span className="text-slate-500 block text-[11px] sm:text-xs mb-1">Delivered Link</span>
+                  <span className="text-slate-500 dark:text-slate-400 block text-[11px] sm:text-xs mb-1">Delivered Link</span>
                   <a
                     href={project.deliveredLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-xs sm:text-sm font-semibold break-all"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1 text-xs sm:text-sm font-semibold break-all"
                   >
                     <ExternalLink size={14} className="flex-shrink-0" /> Open Delivery Link
                   </a>
@@ -285,7 +287,7 @@ const StudentTracking = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-3 sm:px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-200">
+    <div className="min-h-screen bg-transparent px-3 sm:px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -312,7 +314,7 @@ const StudentTracking = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-8 sm:mb-10 shadow-card"
+          className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-8 sm:mb-10 shadow-card"
         >
           <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1">
@@ -350,20 +352,20 @@ const StudentTracking = () => {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-16 sm:py-20 text-center">
             <Loader2 size={36} className="text-blue-600 animate-spin mb-3 sm:mb-4" />
-            <p className="text-slate-500 text-xs sm:text-sm">Searching projects for {email}...</p>
+            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Searching projects for {email}...</p>
           </div>
         ) : searched && projects.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12 sm:py-16 px-4 sm:px-6 bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-sm"
+            className="text-center py-12 sm:py-16 px-4 sm:px-6 bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl shadow-sm"
           >
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-2xl sm:text-3xl">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-2xl sm:text-3xl">
               🔍
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2">No Projects Found</h3>
-            <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto mb-5 sm:mb-6 leading-relaxed">
-              We couldn't find any project requests submitted with <span className="text-blue-600 font-semibold break-all">{email}</span>. Please verify your email or submit a new project request.
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2">No Projects Found</h3>
+            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm max-w-md mx-auto mb-5 sm:mb-6 leading-relaxed">
+              We couldn't find any project requests submitted with <span className="text-blue-600 dark:text-blue-400 font-semibold break-all">{email}</span>. Please verify your email or submit a new project request.
             </p>
             <button
               onClick={() => navigate('/submit')}
@@ -375,11 +377,11 @@ const StudentTracking = () => {
         ) : projects.length > 0 ? (
           <div className="space-y-4 sm:space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-1 px-1">
-              <h2 className="text-base sm:text-lg font-bold text-slate-900">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                 Found {projects.length} project{projects.length > 1 ? 's' : ''}
               </h2>
-              <span className="text-xs text-slate-500">
-                Email: <span className="text-blue-600 font-semibold break-all">{email}</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">
+                Email: <span className="text-blue-600 dark:text-blue-400 font-semibold break-all">{email}</span>
               </span>
             </div>
 
@@ -399,32 +401,32 @@ const StudentTracking = () => {
             transition={{ delay: 0.15 }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
           >
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+            <div className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
                 <Clock size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Live Updates</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">
+              <h4 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm mb-1">Live Updates</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
                 Track status in real-time from Pending to Accepted to Completed.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+            <div className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-100 dark:border-purple-800/80 text-purple-600 dark:text-purple-400 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
                 <ShieldCheck size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Secure Razorpay</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">
+              <h4 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm mb-1">Secure Razorpay</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
                 Pay your 50% advance or unlock final deliverables with 100% secure payments.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+            <div className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-100 dark:border-emerald-800/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
                 <Download size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Instant Access</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">
+              <h4 className="font-bold text-slate-900 dark:text-white text-xs sm:text-sm mb-1">Instant Access</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
                 Download your complete source code, report (PDF), and PPT presentation.
               </p>
             </div>

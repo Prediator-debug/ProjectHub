@@ -34,47 +34,44 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 via-white to-slate-50 px-4 py-8">
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
-
+    <div className="min-h-screen flex items-center justify-center bg-transparent px-4 py-8 text-slate-900 dark:text-slate-100">
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
-        className="relative w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50"
+        className="relative w-full max-w-md bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 text-slate-900 dark:text-white"
       >
         {/* Logo */}
         <div className="flex flex-col items-center mb-6">
-          <Link to="/" className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-3 text-blue-600 shadow-sm hover:scale-105 transition-transform">
+          <Link to="/" className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400 shadow-sm hover:scale-105 transition-transform">
             <LogIn size={26} />
           </Link>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Pro<span className="text-blue-600">Build</span></h1>
-          <p className="text-sm text-slate-500 mt-1">Welcome back! Sign in to continue.</p>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Pro<span className="text-blue-600 dark:text-blue-400">Build</span></h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Welcome back! Sign in to continue.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">Email</label>
+            <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">Email</label>
             <div className="relative">
               <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input id="login-email" name="email" type="email" placeholder="Enter your email" value={form.email} onChange={handleChange}
-                className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm" />
+                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm" />
             </div>
           </div>
 
           {/* Password */}
           <div>
             <div className="flex justify-between items-center mb-1.5">
-              <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider">Password</label>
-              <Link to="/forgot-password" className="text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors">Forgot password?</Link>
+              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">Password</label>
+              <Link to="/forgot-password" className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">Forgot password?</Link>
             </div>
             <div className="relative">
               <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
               <input id="login-password" name="password" type={showPassword ? 'text' : 'password'} placeholder="Enter your password" value={form.password} onChange={handleChange}
-                className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm" />
-              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors">
+                className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-10 py-3 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm" />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
@@ -84,7 +81,7 @@ const Login = () => {
           <AnimatePresence>
             {error && (
               <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-600 text-sm text-center">
+                className="bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 rounded-xl px-4 py-3 text-sm text-center">
                 {error}
               </motion.div>
             )}
@@ -101,9 +98,9 @@ const Login = () => {
           </button>
         </form>
 
-        <p className="text-center mt-5 text-sm text-slate-600">
+        <p className="text-center mt-5 text-sm text-slate-600 dark:text-slate-400">
           Not registered yet?{' '}
-          <Link to="/register" className="text-blue-600 font-semibold hover:text-blue-700 transition-colors">Register here</Link>
+          <Link to="/register" className="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors">Register here</Link>
         </p>
       </motion.div>
     </div>

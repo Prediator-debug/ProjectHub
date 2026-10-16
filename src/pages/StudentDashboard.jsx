@@ -12,11 +12,11 @@ const getStatusIndex = (status) => STATUS_STEPS.indexOf(status);
 
 const StatusBadge = ({ status }) => {
   const config = {
-    Pending: 'bg-amber-50 border-amber-200/80 text-amber-700',
-    Accepted: 'bg-blue-50 border-blue-200/80 text-blue-700',
-    'In Progress': 'bg-purple-50 border-purple-200/80 text-purple-700',
-    Completed: 'bg-emerald-50 border-emerald-200/80 text-emerald-700',
-    Rejected: 'bg-red-50 border-red-200/80 text-red-700',
+    Pending: 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/80 dark:border-amber-800/80 text-amber-700 dark:text-amber-300',
+    Accepted: 'bg-blue-50 dark:bg-blue-950/60 border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300',
+    'In Progress': 'bg-purple-50 dark:bg-purple-950/60 border-purple-200/80 dark:border-purple-800/80 text-purple-700 dark:text-purple-300',
+    Completed: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300',
+    Rejected: 'bg-red-50 dark:bg-red-950/60 border-red-200/80 dark:border-red-800/80 text-red-700 dark:text-red-300',
   };
   return (
     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold ${config[status] || config.Pending}`}>
@@ -27,7 +27,9 @@ const StatusBadge = ({ status }) => {
 
 const PaymentBadge = ({ status }) => (
   <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold ${
-    status === 'Paid' ? 'bg-emerald-50 border-emerald-200/80 text-emerald-700' : 'bg-amber-50 border-amber-200/80 text-amber-700'
+    status === 'Paid'
+      ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/80 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300'
+      : 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/80 dark:border-amber-800/80 text-amber-700 dark:text-amber-300'
   }`}>
     {status === 'Paid' ? <CheckCircle size={12} /> : <Clock size={12} />}
     {status}
@@ -44,17 +46,19 @@ const ProgressBar = ({ status }) => {
         {steps.map((step, i) => (
           <div key={step} className="flex flex-col items-center flex-1">
             <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${
-              i < idx ? 'bg-blue-600 border-blue-600 text-white'
-              : i === idx ? 'bg-blue-50 border-blue-600 text-blue-600'
-              : 'bg-slate-100 border-slate-300 text-slate-400'
+              i < idx
+                ? 'bg-blue-600 border-blue-600 text-white'
+                : i === idx
+                ? 'bg-blue-50 dark:bg-blue-950/60 border-blue-600 text-blue-600 dark:text-blue-400'
+                : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500'
             }`}>
               {i < idx ? <CheckCircle size={14} /> : i + 1}
             </div>
-            <span className={`text-[10px] mt-1 font-medium hidden sm:block ${i <= idx ? 'text-blue-600 font-semibold' : 'text-slate-400'}`}>{step}</span>
+            <span className={`text-[10px] mt-1 font-medium hidden sm:block ${i <= idx ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-slate-400 dark:text-slate-500'}`}>{step}</span>
           </div>
         ))}
       </div>
-      <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden">
+      <div className="relative h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
         <motion.div
           className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"
           initial={{ width: 0 }}
@@ -203,7 +207,7 @@ const StudentDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-8 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <div className="min-h-screen bg-transparent px-4 py-8 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
@@ -224,7 +228,7 @@ const StudentDashboard = () => {
             { label: 'Completed', value: stats.completed, color: 'text-emerald-600 dark:text-emerald-400' },
           ].map(({ label, value, color }) => (
             <motion.div key={label} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-              className="bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 text-center shadow-card">
+              className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-4 text-center shadow-card">
               <p className={`text-3xl font-black ${color}`}>{value}</p>
               <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">{label}</p>
             </motion.div>
@@ -246,10 +250,10 @@ const StudentDashboard = () => {
           </div>
         ) : projects.length === 0 ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="text-center py-20 bg-white border border-slate-200/90 rounded-3xl shadow-sm">
+            className="text-center py-20 bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-3xl shadow-sm">
             <div className="text-5xl mb-4">📭</div>
-            <h3 className="text-slate-900 font-bold text-xl mb-2">No Projects Yet</h3>
-            <p className="text-slate-500 mb-6 max-w-sm mx-auto">Submit your first project request to get started!</p>
+            <h3 className="text-slate-900 dark:text-white font-bold text-xl mb-2">No Projects Yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 max-w-sm mx-auto">Submit your first project request to get started!</p>
             <button onClick={() => navigate('/submit')}
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-md transition-all">
               Submit a Project
