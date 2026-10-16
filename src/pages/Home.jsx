@@ -537,8 +537,9 @@ const Home = () => {
                     <div className="w-11 h-11 rounded-2xl bg-blue-50 dark:bg-[#0a1628] border border-blue-200/80 dark:border-[#1c3a6e] flex items-center justify-center text-blue-600 dark:text-[#4f8ef7] flex-shrink-0">
                       <PenSquare size={20} />
                     </div>
+                    <div>
                       <h3 className="text-xl font-black text-slate-900 dark:text-[#e8edf5]">Share Your Review</h3>
-                    <p className="text-slate-500 dark:text-[#8b9ab4] text-xs">Help other students know about our service</p>
+                      <p className="text-slate-500 dark:text-[#8b9ab4] text-xs">Help other students know about our service</p>
                     </div>
                   </div>
 
