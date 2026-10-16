@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import { getAllProjects, updateProjectStatus } from '../services/db';
-import { CheckCircle, XCircle, Loader2, ExternalLink, RefreshCw, Filter, Send } from 'lucide-react';
+import { CheckCircle, XCircle, Loader2, ExternalLink, RefreshCw, Send } from 'lucide-react';
 
 const STATUS_TABS = ['All', 'Pending', 'Accepted', 'In Progress', 'Completed', 'Rejected'];
 
 const StatusBadge = ({ status }) => {
   const conf = {
-    Pending: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400',
-    Accepted: 'bg-blue-500/10 border-blue-500/30 text-blue-400',
-    'In Progress': 'bg-purple-500/10 border-purple-500/30 text-purple-400',
-    Completed: 'bg-green-500/10 border-green-500/30 text-green-400',
-    Rejected: 'bg-red-500/10 border-red-500/30 text-red-400',
+    Pending: 'bg-amber-50 border-amber-200/80 text-amber-700',
+    Accepted: 'bg-blue-50 border-blue-200/80 text-blue-700',
+    'In Progress': 'bg-purple-50 border-purple-200/80 text-purple-700',
+    Completed: 'bg-emerald-50 border-emerald-200/80 text-emerald-700',
+    Rejected: 'bg-red-50 border-red-200/80 text-red-700',
   };
   return <span className={`px-2.5 py-1 rounded-full border text-xs font-semibold ${conf[status] || conf.Pending}`}>{status}</span>;
 };
@@ -57,16 +57,16 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-dark-900 to-dark-800 px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-4 py-8 text-slate-900">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-black text-white">Admin Dashboard</h1>
-            <p className="text-gray-400 mt-1">Logged in as <span className="text-brand-400">{currentUser?.email}</span></p>
+            <h1 className="text-3xl font-black text-slate-900 tracking-tight">Admin Dashboard</h1>
+            <p className="text-slate-500 mt-1">Logged in as <span className="text-blue-600 font-semibold">{currentUser?.email}</span></p>
           </div>
           <button onClick={fetchProjects} id="admin-refresh"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 text-sm transition-all">
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-medium shadow-sm transition-all">
             <RefreshCw size={15} className={loading ? 'animate-spin' : ''} /> Refresh
           </button>
         </div>
@@ -74,14 +74,14 @@ const AdminDashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Total', value: stats.total, color: 'text-white', grad: 'from-brand-600/20 to-purple-600/20', border: 'border-brand-500/20' },
-            { label: 'Pending', value: stats.pending, color: 'text-yellow-400', grad: 'from-yellow-600/10 to-orange-600/10', border: 'border-yellow-500/20' },
-            { label: 'Active', value: stats.active, color: 'text-blue-400', grad: 'from-blue-600/10 to-cyan-600/10', border: 'border-blue-500/20' },
-            { label: 'Completed', value: stats.completed, color: 'text-green-400', grad: 'from-green-600/10 to-emerald-600/10', border: 'border-green-500/20' },
-          ].map(({ label, value, color, grad, border }) => (
-            <div key={label} className={`bg-gradient-to-br ${grad} border ${border} rounded-2xl p-5 text-center`}>
+            { label: 'Total', value: stats.total, color: 'text-slate-900' },
+            { label: 'Pending', value: stats.pending, color: 'text-amber-600' },
+            { label: 'Active', value: stats.active, color: 'text-blue-600' },
+            { label: 'Completed', value: stats.completed, color: 'text-emerald-600' },
+          ].map(({ label, value, color }) => (
+            <div key={label} className="bg-white border border-slate-200/90 rounded-2xl p-5 text-center shadow-card">
               <p className={`text-4xl font-black ${color}`}>{value}</p>
-              <p className="text-gray-500 text-sm mt-1">{label} Projects</p>
+              <p className="text-slate-500 text-sm mt-1 font-medium">{label} Projects</p>
             </div>
           ))}
         </div>
@@ -92,8 +92,8 @@ const AdminDashboard = () => {
             <button key={tab} onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === tab
-                  ? 'bg-gradient-to-r from-brand-600 to-purple-600 text-white shadow-glow'
-                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}>
               {tab} {tab === 'All' ? `(${projects.length})` : tab === activeTab ? `(${filtered.length})` : ''}
             </button>
@@ -102,10 +102,10 @@ const AdminDashboard = () => {
 
         {/* Projects Table / Cards */}
         {loading ? (
-          <div className="flex justify-center py-20"><Loader2 size={36} className="text-brand-400 animate-spin" /></div>
+          <div className="flex justify-center py-20"><Loader2 size={36} className="text-blue-600 animate-spin" /></div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-            <p className="text-gray-400">No {activeTab === 'All' ? '' : activeTab} projects found.</p>
+          <div className="text-center py-20 bg-white border border-slate-200/90 rounded-2xl shadow-sm">
+            <p className="text-slate-500">No {activeTab === 'All' ? '' : activeTab} projects found.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -114,22 +114,22 @@ const AdminDashboard = () => {
                 <motion.div key={project.id} layout
                   initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ delay: idx * 0.04 }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 hover:border-brand-500/20 transition-all">
+                  className="bg-white border border-slate-200/90 rounded-2xl p-5 hover:border-slate-300 transition-all shadow-card">
                   
                   <div className="flex flex-wrap gap-4 items-start justify-between">
                     {/* Project Info */}
                     <div className="flex-1 min-w-[200px]">
                       <div className="flex items-center gap-3 mb-2 flex-wrap">
-                        <h3 className="font-bold text-white text-lg">{project.domain} Project</h3>
+                        <h3 className="font-bold text-slate-900 text-lg">{project.domain} Project</h3>
                         <StatusBadge status={project.status} />
                         <span className={`px-2.5 py-1 rounded-full border text-xs font-semibold ${
-                          project.paymentStatus === 'Paid' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-orange-500/10 border-orange-500/30 text-orange-400'
-                        }`}>{project.paymentStatus}</span>
+                          project.paymentStatus === 'Paid' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-amber-50 border-amber-200 text-amber-700'
+                        }`}>{project.paymentStatus || 'Pending'}</span>
                       </div>
-                      <p className="text-gray-300 text-sm"><span className="text-gray-500">Student:</span> {project.name} · {project.email}</p>
-                      <p className="text-gray-400 text-sm"><span className="text-gray-500">College:</span> {project.college}</p>
-                      <p className="text-gray-400 text-sm"><span className="text-gray-500">Budget:</span> ₹{project.budget} · <span className="text-gray-500">Deadline:</span> {project.deadline}</p>
-                      <p className="text-gray-400 text-sm mt-1 line-clamp-2"><span className="text-gray-500">Desc:</span> {project.description}</p>
+                      <p className="text-slate-700 text-sm"><span className="text-slate-400">Student:</span> {project.name} · {project.email}</p>
+                      <p className="text-slate-600 text-sm"><span className="text-slate-400">College:</span> {project.college}</p>
+                      <p className="text-slate-600 text-sm"><span className="text-slate-400">Budget:</span> ₹{project.budget} · <span className="text-slate-400">Deadline:</span> {project.deadline}</p>
+                      <p className="text-slate-600 text-sm mt-1 line-clamp-2"><span className="text-slate-400">Desc:</span> {project.description}</p>
                     </div>
 
                     {/* Actions */}
@@ -139,13 +139,13 @@ const AdminDashboard = () => {
                           <button id={`accept-${project.id}`}
                             onClick={() => handleStatusUpdate(project.id, { status: 'Accepted' })}
                             disabled={updating[project.id]}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <CheckCircle size={13} />} Accept
                           </button>
                           <button id={`reject-${project.id}`}
                             onClick={() => handleStatusUpdate(project.id, { status: 'Rejected' })}
                             disabled={updating[project.id]}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <XCircle size={13} />} Reject
                           </button>
                         </div>
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
                       {project.status === 'Accepted' && (
                         <button onClick={() => handleStatusUpdate(project.id, { status: 'In Progress' })}
                           disabled={updating[project.id]}
-                          className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 hover:bg-purple-500/20 text-xs font-semibold transition-all disabled:opacity-50">
+                          className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 hover:bg-purple-100 text-xs font-semibold transition-all disabled:opacity-50">
                           Mark In Progress
                         </button>
                       )}
@@ -164,12 +164,12 @@ const AdminDashboard = () => {
                             placeholder="Google Drive link..."
                             value={deliveryLinks[project.id] || ''}
                             onChange={(e) => setDeliveryLinks({ ...deliveryLinks, [project.id]: e.target.value })}
-                            className="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white text-xs placeholder-gray-600 focus:outline-none focus:border-brand-500 transition-all"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-all shadow-sm"
                           />
                           <button id={`deliver-${project.id}`}
                             onClick={() => handleDeliver(project.id)}
                             disabled={updating[project.id]}
-                            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 hover:bg-green-500/20 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <Send size={13} />} Mark Completed
                           </button>
                         </div>
@@ -177,13 +177,13 @@ const AdminDashboard = () => {
                       {project.status === 'Completed' && project.deliveredLink && (
                         <div className="space-y-2">
                           <a href={project.deliveredLink} target="_blank" rel="noreferrer"
-                            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold hover:bg-green-500/20 transition-all">
+                            className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold hover:bg-emerald-100 transition-all">
                             <ExternalLink size={13} /> View Delivered
                           </a>
                           <div className={`text-center text-xs font-semibold px-3 py-1.5 rounded-xl border ${
                             project.paymentStatus === 'Paid'
-                              ? 'bg-green-500/10 border-green-500/30 text-green-400'
-                              : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+                              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                              : 'bg-amber-50 border-amber-200 text-amber-700'
                           }`}>
                             {project.paymentStatus === 'Paid' ? '✅ Payment Received' : '⏳ Awaiting Payment'}
                           </div>

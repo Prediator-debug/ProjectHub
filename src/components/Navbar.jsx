@@ -43,12 +43,12 @@ const Navbar = () => {
       ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-dark-900/85 backdrop-blur-xl border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-subtle">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-xl font-black text-white flex items-center gap-1.5">
+        <Link to="/" className="text-xl font-black text-slate-900 flex items-center gap-1.5 tracking-tight">
           <span>Pro</span>
-          <span className="bg-gradient-to-r from-brand-400 to-purple-400 bg-clip-text text-transparent">Build</span>
+          <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Build</span>
         </Link>
 
         {/* Desktop Nav Links */}
@@ -59,8 +59,8 @@ const Navbar = () => {
               to={to}
               className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium transition-all ${
                 isActive(to)
-                  ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-blue-50 text-blue-600 border border-blue-200/70 font-semibold'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Icon size={15} /> {label}
@@ -70,7 +70,7 @@ const Navbar = () => {
           {!currentUser && (
             <button
               onClick={handleSubmitClick}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
             >
               <FileText size={15} /> Submit Project
             </button>
@@ -81,18 +81,18 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-3">
           {currentUser ? (
             <>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-brand-500 to-purple-600 flex items-center justify-center text-[10px] font-bold text-white">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white">
                   {(currentUser.displayName || currentUser.email)[0].toUpperCase()}
                 </div>
-                <span className="text-sm text-gray-300 font-medium">
+                <span className="text-sm text-slate-700 font-medium">
                   {isAdmin ? '🛡️ Admin' : (currentUser.displayName || currentUser.email.split('@')[0])}
                 </span>
               </div>
               <button
                 id="navbar-logout"
                 onClick={handleLogout}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-red-400 border border-red-500/20 hover:bg-red-500/10 transition-all"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50 transition-all"
               >
                 <LogOut size={14} /> Logout
               </button>
@@ -101,7 +101,7 @@ const Navbar = () => {
             <button
               id="navbar-login"
               onClick={() => openAuthModal('login')}
-              className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 shadow-glow hover:shadow-glow-lg transition-all"
+              className="flex items-center gap-1.5 px-5 py-2 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-sm shadow-blue-500/20 hover:shadow-md transition-all"
             >
               <LogIn size={15} /> Sign In
             </button>
@@ -110,7 +110,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-400 hover:text-white transition-colors p-1"
+          className="md:hidden text-slate-600 hover:text-slate-900 transition-colors p-1"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation menu"
         >
@@ -120,14 +120,14 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
-        <div className="md:hidden bg-dark-800/95 backdrop-blur-xl border-t border-white/5 px-4 py-4 space-y-2">
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-200 px-4 py-4 space-y-2 shadow-lg">
           {navLinks.map(({ to, icon: Icon, label }) => (
             <Link
               key={to}
               to={to}
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                isActive(to) ? 'bg-brand-500/10 text-brand-400' : 'text-gray-400 hover:text-white hover:bg-white/5'
+                isActive(to) ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               <Icon size={16} /> {label}
@@ -140,7 +140,7 @@ const Navbar = () => {
                 setMobileOpen(false);
                 openAuthModal('login', '/submit');
               }}
-              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all text-left"
+              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all text-left"
             >
               <FileText size={16} /> Submit Project
             </button>
@@ -152,19 +152,19 @@ const Navbar = () => {
                 handleLogout();
                 setMobileOpen(false);
               }}
-              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-400 hover:bg-red-500/10 transition-all text-left"
+              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-all text-left"
             >
               <LogOut size={16} /> Logout
             </button>
           ) : (
-            <div className="pt-2 border-t border-white/5">
+            <div className="pt-2 border-t border-slate-200">
               <button
                 id="mobile-navbar-login"
                 onClick={() => {
                   setMobileOpen(false);
                   openAuthModal('login');
                 }}
-                className="w-full py-2.5 rounded-xl text-sm font-bold text-center bg-gradient-to-r from-brand-600 to-purple-600 text-white shadow-glow flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl text-sm font-bold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm flex items-center justify-center gap-2"
               >
                 <LogIn size={16} /> Sign In
               </button>

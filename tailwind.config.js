@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [
-    { pattern: /.*/ }  // in dev, safelist everything to avoid purge issues
+    { pattern: /.*/ }
   ],
   theme: {
     extend: {
@@ -14,35 +14,23 @@ export default {
       },
       colors: {
         brand: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
-        dark: {
-          900: '#0a0a0f',
-          800: '#0f0f1a',
-          700: '#13131f',
-          600: '#1a1a2e',
-          500: '#16213e',
-          400: '#1f2a4a',
-          300: '#252d4a',
-          200: '#2d3561',
-        }
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(99,102,241,0.3)',
-        'glow-lg': '0 0 40px rgba(99,102,241,0.2)',
-        'card': '0 8px 32px rgba(0,0,0,0.4)',
-      },
-      animation: {
-        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 8px -4px rgba(15, 23, 42, 0.04)',
+        'modal': '0 25px 50px -12px rgba(15, 23, 42, 0.2)',
       },
     },
   },
