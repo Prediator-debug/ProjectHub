@@ -114,13 +114,13 @@ const AuthModal = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl z-10 text-slate-900"
+          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl z-10 text-slate-900 dark:text-white"
         >
           {/* Close button with large touch target */}
           <button
             id="auth-modal-close"
             onClick={closeAuthModal}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition-colors"
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -128,13 +128,13 @@ const AuthModal = () => {
 
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-5 sm:mb-6 pt-1">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-3 text-blue-600 shadow-sm">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400 shadow-sm">
               {tab === 'login' ? <LogIn size={24} /> : <UserPlus size={24} />}
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
               {tab === 'login' ? 'Sign In to Submit Project' : 'Create Account'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xs leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xs leading-relaxed">
               {tab === 'login'
                 ? 'Sign in to submit your project requirements and track progress.'
                 : 'Register in seconds to submit your project details and get a quick quote.'}
@@ -142,7 +142,7 @@ const AuthModal = () => {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex bg-slate-100 p-1 rounded-xl sm:rounded-2xl border border-slate-200 mb-5 sm:mb-6">
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 mb-5 sm:mb-6">
             <button
               type="button"
               id="auth-modal-tab-login"
@@ -150,7 +150,7 @@ const AuthModal = () => {
               className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'login'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Sign In
@@ -162,7 +162,7 @@ const AuthModal = () => {
               className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'register'
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Sign Up
@@ -176,7 +176,7 @@ const AuthModal = () => {
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="bg-red-50 border border-red-200 rounded-xl px-4 py-2.5 text-red-600 text-xs sm:text-sm text-center mb-4"
+                className="bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/60 rounded-xl px-4 py-2.5 text-red-600 dark:text-red-400 text-xs sm:text-sm text-center mb-4"
               >
                 {error}
               </motion.div>
@@ -187,7 +187,7 @@ const AuthModal = () => {
           {tab === 'login' ? (
             <form onSubmit={handleLoginSubmit} className="space-y-3.5 sm:space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Email
                 </label>
                 <div className="relative">
@@ -201,14 +201,14 @@ const AuthModal = () => {
                       setLoginForm({ ...loginForm, email: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 sm:py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2.5 sm:py-3 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
                     Password
                   </label>
                   <Link

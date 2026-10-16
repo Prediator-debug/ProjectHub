@@ -115,13 +115,13 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
       layout
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden hover:border-slate-300 transition-all shadow-card"
+      className="bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl overflow-hidden hover:border-slate-300 dark:hover:border-slate-600 transition-all shadow-card"
     >
       <div className="p-4 sm:p-6">
         <div className="flex flex-wrap gap-2 sm:gap-3 items-start justify-between mb-3">
           <div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-900">{project.domain} Project</h3>
-            <p className="text-slate-500 text-xs sm:text-sm mt-0.5">{project.college}</p>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{project.domain} Project</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-0.5">{project.college}</p>
           </div>
           <div className="flex flex-wrap gap-1.5 sm:gap-2">
             <StatusBadge status={project.status} />
@@ -285,7 +285,7 @@ const StudentTracking = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-3 sm:px-4 py-8 sm:py-10 text-slate-900 overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-3 sm:px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -293,16 +293,16 @@ const StudentTracking = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-7 sm:mb-10 px-2"
         >
-          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-semibold mb-3 sm:mb-4 shadow-sm">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold mb-3 sm:mb-4 shadow-sm">
             <Zap size={14} className="text-amber-500 fill-amber-500" /> Real-time Project Tracker
           </span>
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2 sm:mb-3 tracking-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 tracking-tight">
             Track Your{' '}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
               Project Status
             </span>
           </h1>
-          <p className="text-slate-600 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
             Check the live development status of your project, complete advance payments securely, and download completed deliverables.
           </p>
         </motion.div>
@@ -312,7 +312,7 @@ const StudentTracking = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-8 sm:mb-10 shadow-card"
+          className="bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-8 sm:mb-10 shadow-card"
         >
           <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1">
@@ -324,7 +324,7 @@ const StudentTracking = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white border border-slate-200 rounded-xl sm:rounded-2xl pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl sm:rounded-2xl pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
               />
             </div>
             <button

@@ -20,7 +20,7 @@ const DOMAINS = [
 
 const Field = ({ label, icon: Icon, children, error }) => (
   <div>
-    <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
+    <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wider mb-1.5">
       {Icon && <Icon size={14} className="text-slate-400" />} {label}
     </label>
     {children}
@@ -28,7 +28,7 @@ const Field = ({ label, icon: Icon, children, error }) => (
   </div>
 );
 
-const inputCls = "w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm";
+const inputCls = "w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm";
 
 const SubmitForm = () => {
   const navigate = useNavigate();
@@ -104,12 +104,12 @@ const SubmitForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-4 py-8 sm:py-10 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 px-4 py-8 sm:py-10 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       <div className="max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-8 shadow-card">
-          <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-2 tracking-tight">Submit Project Request</h1>
-          <p className="text-slate-600 text-sm mb-7">Fill in the details below and get a quote within 24 hours.</p>
+          className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-5 sm:p-8 shadow-card">
+          <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Submit Project Request</h1>
+          <p className="text-slate-600 dark:text-slate-300 text-sm mb-7">Fill in the details below and get a quote within 24 hours.</p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -126,8 +126,8 @@ const SubmitForm = () => {
             </Field>
 
             <Field label="Project Domain" icon={Layers}>
-              <select id="form-domain" name="domain" value={formData.domain} onChange={handleChange} className={`${inputCls} bg-white text-slate-900`}>
-                {DOMAINS.map(d => <option key={d.value} value={d.value} className="bg-white text-slate-900">{d.label}</option>)}
+              <select id="form-domain" name="domain" value={formData.domain} onChange={handleChange} className={`${inputCls} bg-white dark:bg-slate-800 text-slate-900 dark:text-white`}>
+                {DOMAINS.map(d => <option key={d.value} value={d.value} className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white">{d.label}</option>)}
               </select>
             </Field>
 
