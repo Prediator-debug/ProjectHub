@@ -137,17 +137,35 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-200">
+    <div className="relative min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-200">
+
+      {/* ===== LIVE AMBIENT BACKGROUND OVERLAYS ===== */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Subtle dot matrix across the whole screen */}
+        <div className="absolute inset-0 bg-dot-grid opacity-60 dark:opacity-25" />
+
+        {/* Ambient Floating Gradient Orbs */}
+        {/* Orb 1: Top-Left Cyan/Sky glowing orb */}
+        <div className="absolute -top-28 -left-28 w-[380px] sm:w-[620px] h-[380px] sm:h-[620px] rounded-full bg-gradient-to-br from-blue-400/25 via-sky-300/20 to-indigo-300/10 dark:from-blue-600/15 dark:via-sky-800/10 dark:to-transparent blur-[90px] sm:blur-[130px] animate-float-slow" />
+
+        {/* Orb 2: Top-Right Violet/Indigo glowing orb */}
+        <div className="absolute top-[18%] -right-28 w-[340px] sm:w-[550px] h-[340px] sm:h-[550px] rounded-full bg-gradient-to-bl from-indigo-300/25 via-purple-300/15 to-blue-200/10 dark:from-indigo-600/15 dark:via-purple-900/10 dark:to-transparent blur-[90px] sm:blur-[120px] animate-float-reverse" />
+
+        {/* Orb 3: Mid-page ambient azure light (under Services/How it works) */}
+        <div className="absolute top-[48%] -left-32 w-[380px] sm:w-[650px] h-[380px] sm:h-[650px] rounded-full bg-gradient-to-tr from-cyan-300/20 via-blue-200/15 to-transparent dark:from-cyan-900/10 dark:to-transparent blur-[110px]" />
+
+        {/* Orb 4: Testimonials & Bottom CTA ambient warmth */}
+        <div className="absolute top-[75%] -right-28 w-[400px] sm:w-[620px] h-[400px] sm:h-[620px] rounded-full bg-gradient-to-tl from-blue-400/20 via-indigo-300/15 to-transparent dark:from-blue-700/10 dark:to-transparent blur-[120px] animate-float-slow" />
+
+        {/* Soft radial vignette so content stays razor-sharp */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-100/40 dark:to-slate-950/40" />
+      </div>
 
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[80vh] sm:min-h-[85vh] flex items-center justify-center overflow-hidden px-4 pt-16 sm:pt-20 pb-12 sm:pb-16">
-        {/* Subtle grid background */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:20px_20px] sm:[background-size:24px_24px] opacity-60 pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full sm:w-3/4 h-64 sm:h-80 bg-blue-100/30 dark:bg-blue-900/20 rounded-full blur-3xl pointer-events-none" />
-
+      <section className="relative z-10 min-h-[80vh] sm:min-h-[85vh] flex items-center justify-center overflow-hidden px-4 pt-16 sm:pt-20 pb-12 sm:pb-16">
         <div className="relative z-10 max-w-4xl mx-auto text-center w-full">
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-            <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold mb-5 sm:mb-6 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/60 backdrop-blur-sm border border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold mb-5 sm:mb-6 shadow-sm">
               <Zap size={14} className="text-amber-500 fill-amber-500" />
               #1 Student Project Platform in India
             </span>
@@ -194,7 +212,7 @@ const Home = () => {
             </button>
             <button
               onClick={() => navigate('/track')}
-              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-base sm:text-lg shadow-sm transition-all duration-300"
+              className="w-full sm:w-auto px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-base sm:text-lg shadow-sm transition-all duration-300"
             >
               Track My Project
             </button>
@@ -211,7 +229,7 @@ const Home = () => {
             {['Code + Report + PPT', '100% Original Work', '24-72h Delivery'].map((badge) => (
               <span
                 key={badge}
-                className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium bg-white dark:bg-slate-800 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-slate-200/80 dark:border-slate-700 shadow-sm"
+                className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-slate-200/80 dark:border-slate-700 shadow-sm"
               >
                 ✅ {badge}
               </span>
@@ -221,7 +239,7 @@ const Home = () => {
       </section>
 
       {/* ===== STATS ===== */}
-      <section className="py-12 sm:py-16 px-4">
+      <section className="relative z-10 py-12 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6">
             {stats.map(({ icon: Icon, value, label }, i) => (
@@ -232,9 +250,9 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 text-center hover:border-blue-300 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-300 shadow-sm"
+                className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 text-center hover:border-blue-400 dark:hover:border-blue-500/50 hover:shadow-lg transition-all duration-300 shadow-sm"
               >
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mx-auto mb-2.5 sm:mb-3 text-blue-600 dark:text-blue-400">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50/90 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/80 flex items-center justify-center mx-auto mb-2.5 sm:mb-3 text-blue-600 dark:text-blue-400">
                   <Icon size={20} />
                 </div>
                 <p className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-0.5 sm:mb-1">{value}</p>
@@ -246,7 +264,7 @@ const Home = () => {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section className="py-14 sm:py-20 px-4">
+      <section className="relative z-10 py-14 sm:py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -268,7 +286,7 @@ const Home = () => {
                 viewport={VIEWPORT}
                 custom={i}
                 whileHover={{ y: -4 }}
-                className="group bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-300 dark:hover:border-blue-500/50 hover:shadow-card-hover transition-all duration-300 cursor-pointer shadow-sm"
+                className="group bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-400 dark:hover:border-blue-500/50 hover:shadow-lg transition-all duration-300 cursor-pointer shadow-sm"
                 onClick={handleProjectSubmitClick}
               >
                 <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${color} border flex items-center justify-center mb-4 group-hover:scale-105 transition-transform shadow-sm`}>
@@ -284,7 +302,7 @@ const Home = () => {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="py-14 sm:py-20 px-4 bg-slate-50/70 dark:bg-slate-900/60 border-y border-slate-200/60 dark:border-slate-800">
+      <section className="relative z-10 py-14 sm:py-20 px-4 bg-slate-50/60 dark:bg-slate-900/50 backdrop-blur-sm border-y border-slate-200/70 dark:border-slate-800/80">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -305,13 +323,13 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="relative text-center bg-white dark:bg-slate-800/90 sm:bg-transparent dark:sm:bg-transparent p-5 sm:p-0 rounded-2xl sm:rounded-none border sm:border-none border-slate-200/60 dark:border-slate-700/60 shadow-sm sm:shadow-none"
+                className="relative text-center bg-white/85 dark:bg-slate-800/85 backdrop-blur-md sm:bg-transparent dark:sm:bg-transparent p-5 sm:p-0 rounded-2xl sm:rounded-none border sm:border-none border-slate-200/70 dark:border-slate-700/70 shadow-sm sm:shadow-none"
               >
                 {/* Connector line */}
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-8 left-[60%] w-full h-px bg-slate-200 dark:bg-slate-700" />
                 )}
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">
                   {num}
                 </div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base mb-1.5 sm:mb-2">{title}</h3>
@@ -323,7 +341,7 @@ const Home = () => {
       </section>
 
       {/* ===== TESTIMONIALS ===== */}
-      <section className="py-14 sm:py-20 px-4">
+      <section className="relative z-10 py-14 sm:py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -342,7 +360,7 @@ const Home = () => {
                 setReviewSubmitted(false);
                 setReviewModalOpen(true);
               }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
             >
               <PenSquare size={16} className="text-blue-600 dark:text-blue-400" />
               Write a Review
@@ -358,7 +376,7 @@ const Home = () => {
                 whileInView="visible"
                 viewport={VIEWPORT}
                 custom={i}
-                className="bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-200 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-300 shadow-sm flex flex-col justify-between"
+                className="bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl p-5 sm:p-6 hover:border-blue-300 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-300 shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex gap-0.5 mb-3 sm:mb-4">
@@ -382,7 +400,7 @@ const Home = () => {
       </section>
 
       {/* ===== SUBMIT YOUR PROJECT REQUEST ===== */}
-      <section className="py-16 sm:py-24 px-4 bg-slate-50/50 dark:bg-slate-900/40" id="submit-request">
+      <section className="relative z-10 py-16 sm:py-24 px-4 bg-slate-50/50 dark:bg-slate-900/40 backdrop-blur-sm" id="submit-request">
         <div className="max-w-5xl mx-auto">
           <motion.div
             variants={fadeUp}
@@ -430,7 +448,7 @@ const Home = () => {
                   whileInView="visible"
                   viewport={VIEWPORT}
                   custom={i * 0.08}
-                  className="flex items-start gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300"
+                  className="flex items-start gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/85 dark:bg-slate-800/85 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300"
                 >
                   <span className="text-xl sm:text-2xl flex-shrink-0">{emoji}</span>
                   <div>
@@ -443,7 +461,7 @@ const Home = () => {
 
             {/* Right — CTA Card */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={VIEWPORT} custom={1}>
-              <div className="relative bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50">
+              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-700/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center shadow-xl shadow-slate-200/40 dark:shadow-slate-950/50">
                 <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-800/60 flex items-center justify-center mx-auto mb-4 sm:mb-5 p-3.5 shadow-sm">
                   <span className="text-3xl sm:text-4xl">🎓</span>
                 </div>
@@ -487,7 +505,7 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-6 sm:py-8 px-4 text-center bg-white dark:bg-slate-900 transition-colors duration-200">
+      <footer className="relative z-10 border-t border-slate-200/80 dark:border-slate-800 py-6 sm:py-8 px-4 text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-colors duration-200">
         <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
           © 2024 ProBuild · Student Project Assistance Platform · Made with ❤️ by <span className="text-blue-600 dark:text-blue-400 font-medium">Shubham Torkad</span>
         </p>
