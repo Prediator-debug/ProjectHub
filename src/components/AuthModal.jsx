@@ -98,7 +98,7 @@ const AuthModal = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -110,31 +110,31 @@ const AuthModal = () => {
 
         {/* Modal Dialog */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden text-slate-900"
+          className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl z-10 text-slate-900"
         >
-          {/* Close button */}
+          {/* Close button with large touch target */}
           <button
             id="auth-modal-close"
             onClick={closeAuthModal}
-            className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100 transition-colors"
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition-colors"
             aria-label="Close modal"
           >
             <X size={20} />
           </button>
 
           {/* Header */}
-          <div className="flex flex-col items-center text-center mb-6">
+          <div className="flex flex-col items-center text-center mb-5 sm:mb-6 pt-1">
             <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-3 text-blue-600 shadow-sm">
               {tab === 'login' ? <LogIn size={24} /> : <UserPlus size={24} />}
             </div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
               {tab === 'login' ? 'Sign In to Submit Project' : 'Create Account'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xs">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xs leading-relaxed">
               {tab === 'login'
                 ? 'Sign in to submit your project requirements and track progress.'
                 : 'Register in seconds to submit your project details and get a quick quote.'}
@@ -142,12 +142,12 @@ const AuthModal = () => {
           </div>
 
           {/* Tab Switcher */}
-          <div className="flex bg-slate-100 p-1 rounded-2xl border border-slate-200 mb-6">
+          <div className="flex bg-slate-100 p-1 rounded-xl sm:rounded-2xl border border-slate-200 mb-5 sm:mb-6">
             <button
               type="button"
               id="auth-modal-tab-login"
               onClick={() => { setAuthModalTab('login'); setError(''); }}
-              className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'login'
                   ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-slate-600 hover:text-slate-900'
@@ -159,7 +159,7 @@ const AuthModal = () => {
               type="button"
               id="auth-modal-tab-register"
               onClick={() => { setAuthModalTab('register'); setError(''); }}
-              className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+              className={`flex-1 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                 tab === 'register'
                   ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-slate-600 hover:text-slate-900'
@@ -185,7 +185,7 @@ const AuthModal = () => {
 
           {/* Tab 1: Login Form */}
           {tab === 'login' ? (
-            <form onSubmit={handleLoginSubmit} className="space-y-4">
+            <form onSubmit={handleLoginSubmit} className="space-y-3.5 sm:space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1.5">
                   Email
@@ -201,7 +201,7 @@ const AuthModal = () => {
                       setLoginForm({ ...loginForm, email: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 sm:py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
@@ -230,12 +230,12 @@ const AuthModal = () => {
                       setLoginForm({ ...loginForm, password: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 sm:py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -246,7 +246,7 @@ const AuthModal = () => {
                 id="modal-login-submit"
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg shadow-blue-500/20 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                className="w-full py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg shadow-blue-500/20 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
               >
                 {loading ? (
                   <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -270,7 +270,7 @@ const AuthModal = () => {
             </form>
           ) : (
             /* Tab 2: Register Form */
-            <form onSubmit={handleRegisterSubmit} className="space-y-3.5 max-h-[60vh] overflow-y-auto pr-1">
+            <form onSubmit={handleRegisterSubmit} className="space-y-3">
               <div>
                 <label className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
                   Full Name
@@ -286,7 +286,7 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, name: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
@@ -306,7 +306,7 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, email: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                 </div>
               </div>
@@ -326,12 +326,12 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, password: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
                   >
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -368,12 +368,12 @@ const AuthModal = () => {
                       setRegisterForm({ ...registerForm, confirmPassword: e.target.value });
                       setError('');
                     }}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                    className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 transition-colors"
                   >
                     {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
@@ -393,7 +393,7 @@ const AuthModal = () => {
                 id="modal-reg-submit"
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+                className="w-full py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed mt-2"
               >
                 {loading ? (
                   <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -122,10 +122,10 @@ const ProjectCard = ({ project, onRefresh }) => {
         )}
 
         {/* Actions */}
-        <div className="flex flex-wrap items-center gap-3 mt-5 pt-4 border-t border-slate-100">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 mt-5 pt-4 border-t border-slate-100">
           {['Accepted', 'In Progress'].includes(project.status) && (project.paymentStatus || 'Pending') !== 'Paid' && (
             <button id={`pay-${project.id}`} onClick={handlePay} disabled={paying}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold transition-all shadow-sm shadow-blue-500/20 disabled:opacity-60">
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold transition-all shadow-sm shadow-blue-500/20 disabled:opacity-60">
               {paying ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <CreditCard size={15} />}
               {paying ? 'Processing...' : `Pay Advance (50%) — ₹${Math.floor(Number(project.budget) * 0.5) || 499}`}
             </button>
@@ -133,7 +133,7 @@ const ProjectCard = ({ project, onRefresh }) => {
 
           {project.status === 'Completed' && (project.paymentStatus || 'Pending') !== 'Paid' && (
             <button id={`pay-${project.id}`} onClick={handlePay} disabled={paying}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-bold transition-all shadow-sm disabled:opacity-60">
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-bold transition-all shadow-sm disabled:opacity-60">
               {paying ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <span>🔓</span>}
               {paying ? 'Processing...' : `Unlock Project — ₹${Math.floor(Number(project.budget) * 0.5) || 499}`}
             </button>
@@ -141,13 +141,13 @@ const ProjectCard = ({ project, onRefresh }) => {
 
           {project.status === 'Completed' && project.deliveredLink && project.paymentStatus === 'Paid' && (
             <a href={project.deliveredLink} target="_blank" rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-sm font-semibold transition-all shadow-sm">
-              <Download size={15} /> Download Project Deliverables
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-sm font-semibold transition-all shadow-sm">
+              <Download size={15} /> Download Deliverables
             </a>
           )}
 
           <button onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 text-sm transition-colors ml-auto font-medium">
+            className="flex items-center justify-center gap-1.5 w-full sm:w-auto px-3.5 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 text-sm transition-colors sm:ml-auto font-medium">
             {expanded ? <><ChevronUp size={15} /> Less</> : <><ChevronDown size={15} /> Details</>}
           </button>
         </div>
@@ -157,12 +157,12 @@ const ProjectCard = ({ project, onRefresh }) => {
       <AnimatePresence>
         {expanded && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden bg-slate-50/70 border-t border-slate-100">
-            <div className="px-5 sm:px-6 pb-5 pt-4 grid grid-cols-2 gap-4 text-sm">
+            <div className="px-5 sm:px-6 pb-5 pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
               <div><span className="text-slate-500 block text-xs">Agreed Budget</span><span className="text-slate-900 font-semibold">₹{project.budget}</span></div>
               <div><span className="text-slate-500 block text-xs">Target Deadline</span><span className="text-slate-900 font-semibold">{project.deadline || 'Flexible'}</span></div>
-              <div className="col-span-2"><span className="text-slate-500 block text-xs mb-1">Project Description</span><p className="text-slate-700 leading-relaxed bg-white p-3.5 rounded-xl border border-slate-200 text-xs sm:text-sm">{project.description}</p></div>
+              <div className="sm:col-span-2"><span className="text-slate-500 block text-xs mb-1">Project Description</span><p className="text-slate-700 leading-relaxed bg-white p-3.5 rounded-xl border border-slate-200 text-xs sm:text-sm">{project.description}</p></div>
               {project.deliveredLink && (
-                <div className="col-span-2">
+                <div className="sm:col-span-2">
                   <span className="text-slate-500 block text-xs mb-1">Delivered Link</span>
                   <a href={project.deliveredLink} target="_blank" rel="noreferrer" className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-semibold">
                     <ExternalLink size={14} /> Open Delivery Link

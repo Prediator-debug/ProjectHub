@@ -108,9 +108,9 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button with ample touch target */}
         <button
-          className="md:hidden text-slate-600 hover:text-slate-900 transition-colors p-1"
+          className="md:hidden text-slate-700 hover:text-slate-900 p-2 rounded-xl hover:bg-slate-100 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation menu"
         >
@@ -120,17 +120,17 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-200 px-4 py-4 space-y-2 shadow-lg">
+        <div className="md:hidden bg-white/98 backdrop-blur-2xl border-t border-slate-200 px-4 py-3 space-y-1.5 shadow-xl max-h-[85vh] overflow-y-auto">
           {navLinks.map(({ to, icon: Icon, label }) => (
             <Link
               key={to}
               to={to}
               onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                isActive(to) ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                isActive(to) ? 'bg-blue-50 text-blue-600 font-semibold' : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
-              <Icon size={16} /> {label}
+              <Icon size={17} /> {label}
             </Link>
           ))}
 
@@ -140,31 +140,41 @@ const Navbar = () => {
                 setMobileOpen(false);
                 openAuthModal('login', '/submit');
               }}
-              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all text-left"
+              className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 transition-all text-left"
             >
-              <FileText size={16} /> Submit Project
+              <FileText size={17} /> Submit Project
             </button>
           )}
 
           {currentUser ? (
-            <button
-              onClick={() => {
-                handleLogout();
-                setMobileOpen(false);
-              }}
-              className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 transition-all text-left"
-            >
-              <LogOut size={16} /> Logout
-            </button>
+            <div className="pt-2 border-t border-slate-100 space-y-2">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-[10px] font-bold text-white">
+                  {(currentUser.displayName || currentUser.email)[0].toUpperCase()}
+                </div>
+                <span className="text-xs text-slate-700 font-medium truncate">
+                  {isAdmin ? '🛡️ Admin' : (currentUser.displayName || currentUser.email)}
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setMobileOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50 transition-all"
+              >
+                <LogOut size={16} /> Logout
+              </button>
+            </div>
           ) : (
-            <div className="pt-2 border-t border-slate-200">
+            <div className="pt-2 border-t border-slate-100">
               <button
                 id="mobile-navbar-login"
                 onClick={() => {
                   setMobileOpen(false);
                   openAuthModal('login');
                 }}
-                className="w-full py-2.5 rounded-xl text-sm font-bold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl text-sm font-bold text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm flex items-center justify-center gap-2"
               >
                 <LogIn size={16} /> Sign In
               </button>

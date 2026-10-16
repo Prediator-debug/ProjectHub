@@ -28,7 +28,7 @@ const Field = ({ label, icon: Icon, children, error }) => (
   </div>
 );
 
-const inputCls = "w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm";
+const inputCls = "w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm";
 
 const SubmitForm = () => {
   const navigate = useNavigate();
@@ -104,10 +104,10 @@ const SubmitForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-4 py-10 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-4 py-8 sm:py-10 text-slate-900">
       <div className="max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-slate-200/90 rounded-3xl p-6 md:p-8 shadow-card">
+          className="bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-8 shadow-card">
           <h1 className="text-2xl md:text-3xl font-black text-slate-900 mb-2 tracking-tight">Submit Project Request</h1>
           <p className="text-slate-600 text-sm mb-7">Fill in the details below and get a quote within 24 hours.</p>
 

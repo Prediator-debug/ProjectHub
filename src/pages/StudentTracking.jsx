@@ -33,14 +33,14 @@ const StatusBadge = ({ status }) => {
     Rejected: 'bg-red-50 border-red-200/80 text-red-700',
   };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold ${config[status] || config.Pending}`}>
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs font-semibold ${config[status] || config.Pending}`}>
       {status}
     </span>
   );
 };
 
 const PaymentBadge = ({ status }) => (
-  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold ${
+  <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs font-semibold ${
     status === 'Paid' ? 'bg-emerald-50 border-emerald-200/80 text-emerald-700' : 'bg-amber-50 border-amber-200/80 text-amber-700'
   }`}>
     {status === 'Paid' ? <CheckCircle size={12} /> : <Clock size={12} />}
@@ -57,14 +57,14 @@ const ProgressBar = ({ status }) => {
       <div className="flex items-center justify-between mb-2">
         {steps.map((step, i) => (
           <div key={step} className="flex flex-col items-center flex-1">
-            <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all ${
+            <div className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 flex items-center justify-center text-[10px] sm:text-xs font-bold transition-all ${
               i < idx
                 ? 'bg-blue-600 border-blue-600 text-white'
                 : i === idx
                 ? 'bg-blue-50 border-blue-600 text-blue-600'
                 : 'bg-slate-100 border-slate-300 text-slate-400'
             }`}>
-              {i < idx ? <CheckCircle size={14} /> : i + 1}
+              {i < idx ? <CheckCircle size={12} /> : i + 1}
             </div>
             <span className={`text-[10px] mt-1 font-medium hidden sm:block ${i <= idx ? 'text-blue-600 font-semibold' : 'text-slate-400'}`}>
               {step}
@@ -113,17 +113,17 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       className="bg-white border border-slate-200/90 rounded-2xl overflow-hidden hover:border-slate-300 transition-all shadow-card"
     >
-      <div className="p-5 sm:p-6">
-        <div className="flex flex-wrap gap-3 items-start justify-between mb-3">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-wrap gap-2 sm:gap-3 items-start justify-between mb-3">
           <div>
-            <h3 className="text-lg font-bold text-slate-900">{project.domain} Project</h3>
-            <p className="text-slate-500 text-sm mt-0.5">{project.college}</p>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900">{project.domain} Project</h3>
+            <p className="text-slate-500 text-xs sm:text-sm mt-0.5">{project.college}</p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             <StatusBadge status={project.status} />
             <PaymentBadge status={project.paymentStatus || 'Pending'} />
           </div>
@@ -133,23 +133,22 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
 
         {/* Payment-gated delivery banner */}
         {project.status === 'Completed' && project.deliveredLink && (project.paymentStatus || 'Pending') !== 'Paid' && (
-          <div className="mt-4 flex items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-            <span className="text-2xl">🔒</span>
+          <div className="mt-4 flex items-start sm:items-center gap-3 bg-amber-50 border border-amber-200 rounded-xl p-3 sm:px-4 sm:py-3">
+            <span className="text-xl sm:text-2xl flex-shrink-0">🔒</span>
             <div className="flex-1">
-              <p className="text-amber-900 text-sm font-semibold">Project Ready! Complete payment to unlock.</p>
-              <p className="text-amber-700 text-xs mt-0.5">Your project has been delivered. Pay the balance to access the download link.</p>
+              <p className="text-amber-900 text-xs sm:text-sm font-semibold">Project Ready! Complete payment to unlock.</p>
+              <p className="text-amber-700 text-[11px] sm:text-xs mt-0.5 leading-relaxed">Your project has been delivered. Pay the balance to access the download link.</p>
             </div>
           </div>
         )}
 
-        {/* Actions */}
-        <div className="flex flex-wrap items-center gap-3 mt-5 pt-4 border-t border-slate-100">
-          {/* Pay button — shown when not paid and project is active */}
+        {/* Actions - responsive full width on mobile, inline on desktop */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 mt-4 pt-3.5 border-t border-slate-100">
           {['Accepted', 'In Progress'].includes(project.status) && (project.paymentStatus || 'Pending') !== 'Paid' && (
             <button
               onClick={handlePay}
               disabled={paying}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold transition-all shadow-sm shadow-blue-500/20 disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm shadow-blue-500/20 disabled:opacity-60"
             >
               {paying ? (
                 <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -160,12 +159,11 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
             </button>
           )}
 
-          {/* Unlock button — shown when Completed + unpaid */}
           {project.status === 'Completed' && (project.paymentStatus || 'Pending') !== 'Paid' && (
             <button
               onClick={handlePay}
               disabled={paying}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-bold transition-all shadow-sm disabled:opacity-60"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-bold transition-all shadow-sm disabled:opacity-60"
             >
               {paying ? (
                 <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -176,21 +174,20 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
             </button>
           )}
 
-          {/* Download — only shown AFTER payment */}
           {project.status === 'Completed' && project.deliveredLink && project.paymentStatus === 'Paid' && (
             <a
               href={project.deliveredLink}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-sm font-semibold transition-all shadow-sm"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs sm:text-sm font-semibold transition-all shadow-sm"
             >
-              <Download size={15} /> Download Project Deliverables
+              <Download size={15} /> Download Deliverables
             </a>
           )}
 
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 text-sm transition-colors ml-auto font-medium"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900 text-xs sm:text-sm transition-colors sm:ml-auto font-medium"
           >
             {expanded ? <><ChevronUp size={15} /> Less</> : <><ChevronDown size={15} /> Details</>}
           </button>
@@ -206,38 +203,38 @@ const TrackingProjectCard = ({ project, onRefresh }) => {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden bg-slate-50/70 border-t border-slate-100"
           >
-            <div className="px-5 sm:px-6 pb-5 pt-4 grid grid-cols-2 gap-4 text-sm">
+            <div className="px-4 sm:px-6 pb-4 pt-3.5 grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
               <div>
-                <span className="text-slate-500 block text-xs">Agreed Budget</span>
+                <span className="text-slate-500 block text-[11px] sm:text-xs">Agreed Budget</span>
                 <span className="text-slate-900 font-semibold">₹{project.budget}</span>
               </div>
               <div>
-                <span className="text-slate-500 block text-xs">Target Deadline</span>
+                <span className="text-slate-500 block text-[11px] sm:text-xs">Target Deadline</span>
                 <span className="text-slate-900 font-semibold">{project.deadline || 'Flexible'}</span>
               </div>
               <div className="col-span-2">
-                <span className="text-slate-500 block text-xs mb-1">Project Description</span>
-                <p className="text-slate-700 leading-relaxed bg-white p-3.5 rounded-xl border border-slate-200 text-xs sm:text-sm">
+                <span className="text-slate-500 block text-[11px] sm:text-xs mb-1">Project Description</span>
+                <p className="text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-200 text-xs">
                   {project.description}
                 </p>
               </div>
               {project.deliveredLink && (
                 <div className="col-span-2">
-                  <span className="text-slate-500 block text-xs mb-1">Delivered Link</span>
+                  <span className="text-slate-500 block text-[11px] sm:text-xs mb-1">Delivered Link</span>
                   <a
                     href={project.deliveredLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-sm font-semibold"
+                    className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-xs sm:text-sm font-semibold break-all"
                   >
-                    <ExternalLink size={14} /> Open Delivery Link
+                    <ExternalLink size={14} className="flex-shrink-0" /> Open Delivery Link
                   </a>
                 </div>
               )}
               {project.createdAt && (
                 <div>
-                  <span className="text-slate-500 block text-xs">Request Date</span>
-                  <span className="text-slate-600 text-xs">
+                  <span className="text-slate-500 block text-[11px] sm:text-xs">Request Date</span>
+                  <span className="text-slate-600 text-[11px] sm:text-xs">
                     {new Date(project.createdAt).toLocaleDateString('en-IN', {
                       day: '2-digit',
                       month: 'short',
@@ -288,36 +285,36 @@ const StudentTracking = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-4 py-10 text-slate-900">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/70 via-white to-slate-50/50 px-3 sm:px-4 py-8 sm:py-10 text-slate-900 overflow-x-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="text-center mb-7 sm:mb-10 px-2"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-sm font-semibold mb-4 shadow-sm">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs sm:text-sm font-semibold mb-3 sm:mb-4 shadow-sm">
             <Zap size={14} className="text-amber-500 fill-amber-500" /> Real-time Project Tracker
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-3 tracking-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-2 sm:mb-3 tracking-tight">
             Track Your{' '}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
               Project Status
             </span>
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
+          <p className="text-slate-600 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
             Check the live development status of your project, complete advance payments securely, and download completed deliverables.
           </p>
         </motion.div>
 
         {/* Search Bar Card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 mb-10 shadow-card"
+          className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-4 sm:p-8 mb-8 sm:mb-10 shadow-card"
         >
-          <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-3">
+          <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1">
               <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
@@ -327,14 +324,14 @@ const StudentTracking = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white border border-slate-200 rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                className="w-full bg-white border border-slate-200 rounded-xl sm:rounded-2xl pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
               />
             </div>
             <button
               id="tracking-search-btn"
               type="submit"
               disabled={loading}
-              className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md hover:shadow-lg shadow-blue-500/20 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex-shrink-0"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md hover:shadow-lg shadow-blue-500/20 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex-shrink-0"
             >
               {loading ? (
                 <>
@@ -351,38 +348,38 @@ const StudentTracking = () => {
 
         {/* Content Section */}
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <Loader2 size={40} className="text-blue-600 animate-spin mb-4" />
-            <p className="text-slate-500 text-sm">Searching projects for {email}...</p>
+          <div className="flex flex-col items-center justify-center py-16 sm:py-20 text-center">
+            <Loader2 size={36} className="text-blue-600 animate-spin mb-3 sm:mb-4" />
+            <p className="text-slate-500 text-xs sm:text-sm">Searching projects for {email}...</p>
           </div>
         ) : searched && projects.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-16 px-6 bg-white border border-slate-200/90 rounded-3xl shadow-sm"
+            className="text-center py-12 sm:py-16 px-4 sm:px-6 bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-sm"
           >
-            <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center mx-auto mb-4 text-3xl">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center mx-auto mb-3.5 sm:mb-4 text-2xl sm:text-3xl">
               🔍
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">No Projects Found</h3>
-            <p className="text-slate-600 text-sm max-w-md mx-auto mb-6">
-              We couldn't find any project requests submitted with <span className="text-blue-600 font-semibold">{email}</span>. Please verify your email or submit a new project request.
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2">No Projects Found</h3>
+            <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto mb-5 sm:mb-6 leading-relaxed">
+              We couldn't find any project requests submitted with <span className="text-blue-600 font-semibold break-all">{email}</span>. Please verify your email or submit a new project request.
             </p>
             <button
               onClick={() => navigate('/submit')}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-md transition-all"
             >
-              Submit a Project <ArrowRight size={16} />
+              Submit a Project <ArrowRight size={15} />
             </button>
           </motion.div>
         ) : projects.length > 0 ? (
-          <div className="space-y-5">
-            <div className="flex items-center justify-between px-1">
-              <h2 className="text-lg font-bold text-slate-900">
+          <div className="space-y-4 sm:space-y-5">
+            <div className="flex flex-wrap items-center justify-between gap-1 px-1">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900">
                 Found {projects.length} project{projects.length > 1 ? 's' : ''}
               </h2>
               <span className="text-xs text-slate-500">
-                Email: <span className="text-blue-600 font-semibold">{email}</span>
+                Email: <span className="text-blue-600 font-semibold break-all">{email}</span>
               </span>
             </div>
 
@@ -399,34 +396,34 @@ const StudentTracking = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+            transition={{ delay: 0.15 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
           >
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-3">
-                <Clock size={20} />
+            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <Clock size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-sm mb-1">Live Updates</h4>
+              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Live Updates</h4>
               <p className="text-slate-500 text-xs leading-relaxed">
                 Track status in real-time from Pending to Accepted to Completed.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-3">
-                <ShieldCheck size={20} />
+            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <ShieldCheck size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-sm mb-1">Secure Razorpay</h4>
+              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Secure Razorpay</h4>
               <p className="text-slate-500 text-xs leading-relaxed">
                 Pay your 50% advance or unlock final deliverables with 100% secure payments.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-5 text-center shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
-                <Download size={20} />
+            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2.5 sm:mb-3">
+                <Download size={18} />
               </div>
-              <h4 className="font-bold text-slate-900 text-sm mb-1">Instant Access</h4>
+              <h4 className="font-bold text-slate-900 text-xs sm:text-sm mb-1">Instant Access</h4>
               <p className="text-slate-500 text-xs leading-relaxed">
                 Download your complete source code, report (PDF), and PPT presentation.
               </p>

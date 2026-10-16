@@ -133,19 +133,19 @@ const AdminDashboard = () => {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex flex-col gap-2 min-w-[180px]">
+                    <div className="flex flex-col gap-2 w-full md:w-auto md:min-w-[180px] pt-2 md:pt-0 border-t md:border-t-0 border-slate-100">
                       {project.status === 'Pending' && (
                         <div className="flex gap-2">
                           <button id={`accept-${project.id}`}
                             onClick={() => handleStatusUpdate(project.id, { status: 'Accepted' })}
                             disabled={updating[project.id]}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <CheckCircle size={13} />} Accept
                           </button>
                           <button id={`reject-${project.id}`}
                             onClick={() => handleStatusUpdate(project.id, { status: 'Rejected' })}
                             disabled={updating[project.id]}
-                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <XCircle size={13} />} Reject
                           </button>
                         </div>
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
                       {project.status === 'Accepted' && (
                         <button onClick={() => handleStatusUpdate(project.id, { status: 'In Progress' })}
                           disabled={updating[project.id]}
-                          className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 hover:bg-purple-100 text-xs font-semibold transition-all disabled:opacity-50">
+                          className="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-purple-50 border border-purple-200 text-purple-700 hover:bg-purple-100 text-xs font-semibold transition-all disabled:opacity-50">
                           Mark In Progress
                         </button>
                       )}
@@ -164,12 +164,12 @@ const AdminDashboard = () => {
                             placeholder="Google Drive link..."
                             value={deliveryLinks[project.id] || ''}
                             onChange={(e) => setDeliveryLinks({ ...deliveryLinks, [project.id]: e.target.value })}
-                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-all shadow-sm"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-slate-900 text-base sm:text-xs placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-all shadow-sm"
                           />
                           <button id={`deliver-${project.id}`}
                             onClick={() => handleDeliver(project.id)}
                             disabled={updating[project.id]}
-                            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-semibold transition-all disabled:opacity-50">
+                            className="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 text-xs font-semibold transition-all disabled:opacity-50">
                             {updating[project.id] ? <Loader2 size={13} className="animate-spin" /> : <Send size={13} />} Mark Completed
                           </button>
                         </div>
