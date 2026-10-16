@@ -31,7 +31,7 @@ const testimonials = [
 ];
 
 const stats = [
-  { icon: ThumbsUp, value: '100+', label: 'Projects Completed' },
+  { icon: ThumbsUp, value: '50+', label: 'Projects Completed' },
   { icon: Clock, value: '24h', label: 'Response Time' },
   { icon: Star, value: '100%', label: 'Satisfaction Rate' },
 ];
@@ -245,7 +245,7 @@ const Home = () => {
             className="text-center mb-10 sm:mb-14"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight">What Students Say</h2>
-            <p className="text-slate-600 text-sm sm:text-lg">Join 100+ students who've already trusted us with their projects.</p>
+            <p className="text-slate-600 text-sm sm:text-lg">Join 50+ students who've already trusted us with their projects.</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {testimonials.map(({ name, college, text, rating, avatar }, i) => (
@@ -346,7 +346,7 @@ const Home = () => {
 
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-1.5 sm:mb-2">Ready to Submit?</h3>
                 <p className="text-slate-600 text-xs sm:text-sm mb-5 sm:mb-6 leading-relaxed max-w-sm mx-auto">
-                  Join 100+ students who got their projects done professionally. Fill the form and get a quote in minutes.
+                  Join 50+ students who got their projects done professionally. Fill the form and get a quote in minutes.
                 </p>
 
                 {/* Pricing preview */}
